@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Btown News Quiz · Btown Games</title>
+  <meta name="description" content="Did you actually read this week's Btown Brief? Five questions, sixty seconds. A Btown Games production." />
+  <meta property="og:title" content="Btown News Quiz" />
+  <meta property="og:description" content="Did you actually read this week's Btown Brief? Five questions, sixty seconds." />
+  <meta property="og:image" content="https://btownbrief.github.io/news-quiz/assets/og-image.png" />
+  <meta property="og:url" content="https://btownbrief.github.io/news-quiz/" />
+  <meta name="theme-color" content="#12233a" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="kicker">BTOWN GAMES · DAILY EDITION</div>
+    <h1>THE <span>NEWS QUIZ</span></h1>
+    <div class="rule"></div>
+  </header>
+
+  <main>
+    <!-- Intro -->
+    <section id="introScreen" class="screen">
+      <div class="paper">
+        <p class="lede">Did you <em>actually</em> read this week's Btown Brief?</p>
+        <ul class="rules">
+          <li>🗞️ <strong><span id="qCount">5</span> questions</strong> straight from the latest edition</li>
+          <li>⏱️ <strong>60 seconds</strong> on the clock — finish fast for a speed bonus</li>
+          <li>🏆 One play per edition · monthly leaderboard with the whole town</li>
+        </ul>
+      </div>
+      <button class="btn-primary" id="startBtn">Take today's quiz</button>
+    </section>
+
+    <!-- Game -->
+    <section id="gameScreen" class="screen hidden">
+      <div class="timerbar"><div id="timerFill"></div></div>
+      <div class="qmeta">
+        <span id="qNum"></span>
+        <span class="clock-wrap">⏱️ <span id="clock">60</span>s</span>
+      </div>
+      <div class="qcard">
+        <p id="qText"></p>
+        <div id="choices"></div>
+      </div>
+      <div id="reveal" class="reveal hidden">
+        <p id="revealHead"></p>
+        <p id="revealAns"></p>
+        <button class="btn-primary" id="nextBtn">Next question →</button>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section id="resultsScreen" class="screen hidden">
+      <h2 id="verdict"></h2>
+      <div class="scoreline"><span id="finalScore"></span><span class="pts">pts</span></div>
+      <div class="score-detail" id="scoreDetail"></div>
+      <div class="squares" id="squares"></div>
+
+      <div class="share-row">
+        <button class="btn-primary" id="shareBtn">Share your score</button>
+        <span id="shareDone" class="share-done hidden">Copied!</span>
+      </div>
+      <div class="next-note" id="nextNote"></div>
+
+      <div class="lb hidden" id="lb">
+        <div class="lb-tabs">
+          <button class="chip sel" id="lbThisBtn">🏆 This Month</button>
+          <button class="chip" id="lbLastBtn">Last Month</button>
+        </div>
+        <div class="lb-status" id="lbStatus"></div>
+        <ol id="lbList"></ol>
+        <div class="lb-form hidden" id="lbForm">
+          <input id="lbNameInput" maxlength="20" placeholder="Your name" autocomplete="off" />
+          <button class="chip" id="lbSaveBtn">Save</button>
+        </div>
+        <button class="chip lb-rename hidden" id="lbRenameBtn">✏️ Change name</button>
+      </div>
+
+      <a class="cta" href="https://www.btownbrief.com" target="_blank" rel="noopener">📰 Never miss a question — read the Btown Brief →</a>
+    </section>
+  </main>
+
+  <footer>
+    A <strong>Btown Games</strong> production · Read the <a href="https://www.btownbrief.com" target="_blank" rel="noopener">Btown Brief</a>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "edition": "2026-07-07",
+  "questions": [
+    {
+      "id": 1,
+      "q": "How much does UVM Health expect to save each year by dropping weight loss drug coverage for employees?",
+      "options": [
+        "$5 million",
+        "$19 million",
+        "$40 million",
+        "$62 million"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 2,
+      "q": "What Montréal festival runs July 15-26 and bills itself as comedy's biggest industry event?",
+      "options": [
+        "Osheaga",
+        "Just for Laughs",
+        "Fantasia",
+        "Igloofest"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 3,
+      "q": "What new weekly club has Quarterstaff Games been hosting downtown?",
+      "options": [
+        "Chess Club",
+        "Pokémon Club",
+        "Magic League",
+        "Warhammer Night"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 4,
+      "q": "Why did Nostalgia Toys on Church Street close after seven months?",
+      "options": [
+        "The owners retired",
+        "A fire",
+        "Rent, costs, staffing, and theft",
+        "It moved to South Burlington"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 5,
+      "q": "Where is Leunig's opening its second location this winter?",
+      "options": [
+        "Winooski",
+        "Essex Junction",
+        "South Burlington's City Center",
+        "Shelburne Road"
+      ],
+      "answer": 2
+    }
+  ]
+}
