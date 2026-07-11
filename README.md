@@ -1,6 +1,6 @@
 # Btown News Quiz 🗞️
 
-"Did you actually read this week's Btown Brief?" — a flat 5-question, 60-second
+"Did you actually read this week's BTown Brief?" — a flat 5-question, 60-second
 quiz on the static Btown Games stack (no build step), part of the arcade at
 play.btownbrief.com/news-quiz/. Ported from the original Streamlit + Google
 Sheets app; scores now live on the shared Supabase monthly leaderboard

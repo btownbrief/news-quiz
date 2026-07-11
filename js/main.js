@@ -1,4 +1,4 @@
-// NEWS QUIZ — did you actually read this week's Btown Brief?
+// NEWS QUIZ — did you actually read this week's BTown Brief?
 // Flat 5-question quiz on a single 60-second clock (mirrors the original
 // Streamlit game), on the static Btown Games stack + shared Supabase board.
 import { loadEdition } from './questions.js';

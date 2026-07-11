@@ -1,6 +1,6 @@
 // News Quiz loads the CURRENT edition's quiz from data/questions.json.
 // Unlike the trivia ladder there's no big bank / daily seed: the whole file
-// IS this edition's five questions, refreshed each Btown Brief. The `edition`
+// IS this edition's five questions, refreshed each BTown Brief. The `edition`
 // string gates replays — publish a new edition and everyone can play again.
 
 export async function loadEdition() {
