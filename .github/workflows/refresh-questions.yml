@@ -1,0 +1,65 @@
+name: Pull questions from Google Sheet
+
+# Stephen edits the questions in his Google Sheet ("Daily Trivia Database",
+# Questions tab); this pulls the sheet as CSV every Monday and Friday and
+# rebuilds data/questions.json. Two runs each day (morning + early
+# afternoon Burlington time) so a late sheet edit still lands same-day.
+#
+# It only commits when the QUESTIONS actually changed. convert-csv.mjs
+# stamps `edition` with the run date, and a new edition resets everyone's
+# one-play-per-edition lockout — so an unchanged sheet must not bump it.
+
+on:
+  schedule:
+    - cron: '0 12 * * 1,5'   # Mon & Fri 8 AM EDT / 7 AM EST
+    - cron: '0 17 * * 1,5'   # Mon & Fri 1 PM EDT / noon EST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/1GRGfAZ7yLtWotxz-W1Kk047LOGq7Qr53nwnKpN-wQCA/export?format=csv"
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download the sheet as CSV
+        run: |
+          curl -sfL "$SHEET_CSV_URL" -o /tmp/questions.csv
+          head -c 200 /tmp/questions.csv | grep -q '^Question,' \
+            || { echo "CSV doesn't start with the expected header — sheet moved or sharing changed?"; exit 1; }
+
+      - name: Convert to questions.json
+        run: |
+          cp data/questions.json /tmp/old-questions.json
+          node scripts/convert-csv.mjs /tmp/questions.csv
+
+      - name: Keep the old edition if the questions are unchanged
+        run: |
+          if node -e '
+            const fs = require("fs");
+            const old = JSON.parse(fs.readFileSync("/tmp/old-questions.json", "utf8"));
+            const cur = JSON.parse(fs.readFileSync("data/questions.json", "utf8"));
+            process.exit(JSON.stringify(old.questions) === JSON.stringify(cur.questions) ? 0 : 1);
+          '; then
+            echo "Questions unchanged — restoring previous edition stamp."
+            cp /tmp/old-questions.json data/questions.json
+          else
+            echo "New questions — publishing new edition."
+          fi
+
+      - name: Commit if changed
+        run: |
+          git config user.name "btown-brief-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/questions.json
+          if git diff --cached --quiet; then
+            echo "No new edition."
+          else
+            git commit -m "New quiz edition from Google Sheet"
+            git push || (git pull --rebase && git push)
+          fi

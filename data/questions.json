@@ -1,60 +1,60 @@
 {
-  "edition": "2026-07-07",
+  "edition": "2026-07-16",
   "questions": [
     {
       "id": 1,
-      "q": "How much does UVM Health expect to save each year by dropping weight loss drug coverage for employees?",
+      "q": "Under Shelburne's new police contract, what is the new base hourly wage for a patrol officer?",
       "options": [
-        "$5 million",
-        "$19 million",
-        "$40 million",
-        "$62 million"
+        "$28.66",
+        "$29",
+        "$35",
+        "$36.95"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 2,
-      "q": "What Montréal festival runs July 15-26 and bills itself as comedy's biggest industry event?",
+      "q": "Roughly how many of Vermont's 200 plus FEMA home buyout applications have yet to be closed?",
       "options": [
-        "Osheaga",
-        "Just for Laughs",
-        "Fantasia",
-        "Igloofest"
+        "25",
+        "50",
+        "100",
+        "175"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 3,
-      "q": "What new weekly club has Quarterstaff Games been hosting downtown?",
+      "q": "About how many workers does Beta Technologies employ in South Burlington after its recent hiring spree?",
       "options": [
-        "Chess Club",
-        "Pokémon Club",
-        "Magic League",
-        "Warhammer Night"
+        "700",
+        "1,000",
+        "1,400",
+        "2,100"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 4,
-      "q": "Why did Nostalgia Toys on Church Street close after seven months?",
+      "q": "Seven Days' Stuck in Vermont revisited which village two years after its devastating flood?",
       "options": [
-        "The owners retired",
-        "A fire",
-        "Rent, costs, staffing, and theft",
-        "It moved to South Burlington"
+        "Barre",
+        "Richmond",
+        "Plainfield",
+        "Johnson"
       ],
       "answer": 2
     },
     {
       "id": 5,
-      "q": "Where is Leunig's opening its second location this winter?",
+      "q": "VermontBiz's annual influencers list names 91 people as a nod to what?",
       "options": [
-        "Winooski",
-        "Essex Junction",
-        "South Burlington's City Center",
-        "Shelburne Road"
+        "Vermont's 91 mountain peaks",
+        "Vermont's 1791 statehood",
+        "Route 91",
+        "The 91 towns in Chittenden County"
       ],
-      "answer": 2
+      "answer": 1
     }
   ]
 }
