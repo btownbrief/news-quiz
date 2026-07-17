@@ -1,60 +1,60 @@
 {
-  "edition": "2026-07-16",
+  "edition": "2026-07-17",
   "questions": [
     {
       "id": 1,
-      "q": "Under Shelburne's new police contract, what is the new base hourly wage for a patrol officer?",
+      "q": "Who do the Vermont Green FC women play in Saturday's USL W League national final?",
       "options": [
-        "$28.66",
-        "$29",
-        "$35",
-        "$36.95"
+        "Asheville City SC",
+        "Ironbound SC",
+        "Salmon Bay FC",
+        "FC Motown"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "Roughly how many of Vermont's 200 plus FEMA home buyout applications have yet to be closed?",
+      "q": "What does Burlington lack that nearly 200 other Vermont communities have?",
       "options": [
-        "25",
-        "50",
-        "100",
-        "175"
+        "A farmers market",
+        "A historical society",
+        "A public library",
+        "A food co-op"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 3,
-      "q": "About how many workers does Beta Technologies employ in South Burlington after its recent hiring spree?",
+      "q": "What unusual feature connects the Stowe mansion's house to its indoor sports barn?",
       "options": [
-        "700",
-        "1,000",
-        "1,400",
-        "2,100"
+        "A covered bridge",
+        "An underground tunnel",
+        "A gondola",
+        "A greenhouse"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 4,
-      "q": "Seven Days' Stuck in Vermont revisited which village two years after its devastating flood?",
+      "q": "According to a study cited by Vermont Public, wildfire smoke can be how much more harmful than car exhaust pollution?",
       "options": [
-        "Barre",
-        "Richmond",
-        "Plainfield",
-        "Johnson"
+        "Twice",
+        "Five times",
+        "Up to 10 times",
+        "Equal"
       ],
       "answer": 2
     },
     {
       "id": 5,
-      "q": "VermontBiz's annual influencers list names 91 people as a nod to what?",
+      "q": "What milestone is Front Porch Forum celebrating this year?",
       "options": [
-        "Vermont's 91 mountain peaks",
-        "Vermont's 1791 statehood",
-        "Route 91",
-        "The 91 towns in Chittenden County"
+        "10 years",
+        "15 years",
+        "20 years",
+        "25 years"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }
