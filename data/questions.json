@@ -1,58 +1,58 @@
 {
-  "edition": "2026-07-17",
+  "edition": "2026-07-20",
   "questions": [
     {
       "id": 1,
-      "q": "Who do the Vermont Green FC women play in Saturday's USL W League national final?",
+      "q": "How many years did Vermont spend as an independent republic before becoming the 14th state?",
       "options": [
-        "Asheville City SC",
-        "Ironbound SC",
-        "Salmon Bay FC",
-        "FC Motown"
+        "5",
+        "14",
+        "21",
+        "35"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 2,
-      "q": "What does Burlington lack that nearly 200 other Vermont communities have?",
+      "q": "How large is the battery storage system Burlington City Council just approved for the McNeil Generating Station?",
       "options": [
-        "A farmers market",
-        "A historical society",
-        "A public library",
-        "A food co-op"
+        "1 megawatt",
+        "5 megawatts",
+        "20 megawatts",
+        "60 megawatts"
       ],
       "answer": 1
     },
     {
       "id": 3,
-      "q": "What unusual feature connects the Stowe mansion's house to its indoor sports barn?",
+      "q": "What do blood donors who give by July 31 receive from the Red Cross during the emergency shortage?",
       "options": [
-        "A covered bridge",
-        "An underground tunnel",
-        "A gondola",
-        "A greenhouse"
+        "A gift card to City Market",
+        "A movie ticket",
+        "A free t-shirt",
+        "A Creemee voucher"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "According to a study cited by Vermont Public, wildfire smoke can be how much more harmful than car exhaust pollution?",
+      "q": "What chemical concern is driving opposition to the CVU turf field?",
       "options": [
-        "Twice",
-        "Five times",
-        "Up to 10 times",
-        "Equal"
+        "Asbestos",
+        "Lead",
+        "PFAS",
+        "Radon"
       ],
       "answer": 2
     },
     {
       "id": 5,
-      "q": "What milestone is Front Porch Forum celebrating this year?",
+      "q": "According to the UNH poll, what share of Vermonters aged 18 to 34 say they will likely leave the state within five years?",
       "options": [
-        "10 years",
-        "15 years",
-        "20 years",
-        "25 years"
+        "21 percent",
+        "40 percent",
+        "60 percent",
+        "86 percent"
       ],
       "answer": 2
     }
