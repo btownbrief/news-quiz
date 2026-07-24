@@ -1,58 +1,58 @@
 {
-  "edition": "2026-07-20",
+  "edition": "2026-07-24",
   "questions": [
     {
       "id": 1,
-      "q": "How many years did Vermont spend as an independent republic before becoming the 14th state?",
+      "q": "The recovered cannon belonged to a gunboat under whose command at the 1776 Battle of Valcour?",
       "options": [
-        "5",
-        "14",
-        "21",
-        "35"
+        "Ethan Allen",
+        "Benedict Arnold",
+        "George Washington",
+        "Thomas Rogers"
       ],
       "answer": 1
     },
     {
       "id": 2,
-      "q": "How large is the battery storage system Burlington City Council just approved for the McNeil Generating Station?",
+      "q": "What emerging semiconductor material is the new V-GAN tech hub in South Burlington built around?",
       "options": [
-        "1 megawatt",
-        "5 megawatts",
-        "20 megawatts",
-        "60 megawatts"
+        "Graphene",
+        "Gallium nitride",
+        "Silicon carbide",
+        "Quantum dots"
       ],
       "answer": 1
     },
     {
       "id": 3,
-      "q": "What do blood donors who give by July 31 receive from the Red Cross during the emergency shortage?",
+      "q": "The Festival of Fools returns to Church Street next weekend celebrating how many years?",
       "options": [
-        "A gift card to City Market",
-        "A movie ticket",
-        "A free t-shirt",
-        "A Creemee voucher"
+        "10",
+        "18",
+        "25",
+        "33"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "What chemical concern is driving opposition to the CVU turf field?",
+      "q": "What deal did the Vermont Brewers Festival offer Canadian visitors this year?",
       "options": [
-        "Asbestos",
-        "Lead",
-        "PFAS",
-        "Radon"
+        "Free parking",
+        "Tickets at par in Canadian dollars",
+        "Free festival glassware",
+        "Two-for-one tickets"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 5,
-      "q": "According to the UNH poll, what share of Vermonters aged 18 to 34 say they will likely leave the state within five years?",
+      "q": "What share of its journalists did Vermont lose between 2013 and 2023, per the study cited with Gov. Scott's local media order?",
       "options": [
-        "21 percent",
-        "40 percent",
-        "60 percent",
-        "86 percent"
+        "23 percent",
+        "38 percent",
+        "53 percent",
+        "70 percent"
       ],
       "answer": 2
     }
