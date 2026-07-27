@@ -1,58 +1,58 @@
 {
-  "edition": "2026-07-24",
+  "edition": "2026-07-27",
   "questions": [
     {
       "id": 1,
-      "q": "The recovered cannon belonged to a gunboat under whose command at the 1776 Battle of Valcour?",
+      "q": "What will South Burlington use for infill in Vermont's first PFAS free synthetic turf field?",
       "options": [
-        "Ethan Allen",
-        "Benedict Arnold",
-        "George Washington",
-        "Thomas Rogers"
+        "Crumb rubber",
+        "Beach sand",
+        "Small wood chip pellets",
+        "Recycled glass"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 2,
-      "q": "What emerging semiconductor material is the new V-GAN tech hub in South Burlington built around?",
+      "q": "What was the vote when Healthy Living employees decided to unionize on April 8?",
       "options": [
-        "Graphene",
-        "Gallium nitride",
-        "Silicon carbide",
-        "Quantum dots"
+        "78 to 64",
+        "105 to 69",
+        "95 to 91",
+        "120 to 30"
       ],
       "answer": 1
     },
     {
       "id": 3,
-      "q": "The Festival of Fools returns to Church Street next weekend celebrating how many years?",
+      "q": "What color flagging marks the cut invasive buckthorn that anyone can pull at Oakledge Park?",
       "options": [
-        "10",
-        "18",
-        "25",
-        "33"
+        "Blue",
+        "Yellow",
+        "Orange",
+        "Pink"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 4,
-      "q": "What deal did the Vermont Brewers Festival offer Canadian visitors this year?",
+      "q": "What did UVM researchers determine is causing the black splotches on Lake Memphremagog's brown bullhead catfish?",
       "options": [
-        "Free parking",
-        "Tickets at par in Canadian dollars",
-        "Free festival glassware",
-        "Two-for-one tickets"
+        "A parasite infestation",
+        "Transmissible melanoma",
+        "PFAS contamination",
+        "A fungal infection"
       ],
       "answer": 1
     },
     {
       "id": 5,
-      "q": "What share of its journalists did Vermont lose between 2013 and 2023, per the study cited with Gov. Scott's local media order?",
+      "q": "Which two parks appeared in Plan BTV New North End renderings that alarmed residents?",
       "options": [
-        "23 percent",
-        "38 percent",
-        "53 percent",
-        "70 percent"
+        "Oakledge and Battery",
+        "Leddy and Waterfront",
+        "Starr Farm and Ethan Allen",
+        "Callahan and Schmanska"
       ],
       "answer": 2
     }
