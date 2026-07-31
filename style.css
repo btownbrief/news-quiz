@@ -82,12 +82,19 @@ main { flex: 1; width: 100%; max-width: 620px; margin: 0 auto; padding: 14px 16p
 .timerbar { height: 8px; background: rgba(255, 255, 255, .1); border-radius: 999px; overflow: hidden; }
 #timerFill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--green), var(--lake)); transition: width .1s linear; }
 #timerFill.hurry { background: linear-gradient(90deg, #ff8a3d, var(--red)); }
+#clock.hurry { display: inline-block; color: #ff9a75; animation: clock-panic .8s ease-in-out infinite; }
+#clock.critical { color: #ff6f61; animation-duration: .46s; }
+@keyframes clock-panic { 50% { transform: scale(1.13); text-shadow: 0 0 8px rgba(255, 111, 97, .45); } }
 .qmeta {
   display: flex; justify-content: space-between; align-items: center;
   font-family: system-ui, sans-serif; font-weight: 800; font-size: 13px;
   color: var(--muted); margin: 10px 2px;
 }
 .clock-wrap { color: var(--gold); font-variant-numeric: tabular-nums; }
+.momentum {
+  min-height: 24px; margin: -3px 0 8px; text-align: center;
+  font: 17px/1 system-ui, sans-serif; letter-spacing: 5px;
+}
 .qcard {
   background: linear-gradient(180deg, var(--card-2), var(--card));
   border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px;
@@ -107,6 +114,10 @@ main { flex: 1; width: 100%; max-width: 620px; margin: 0 auto; padding: 14px 16p
 .choice.correct { background: #14663c; border-color: var(--green); color: #eafff2; }
 .choice.wrong { background: #6a231b; border-color: var(--red); color: #ffe9e6; }
 .choice.dim { opacity: .45; }
+.choice.flare { animation: answer-flare .22s ease-out; }
+@keyframes answer-flare {
+  45% { transform: scale(1.025); box-shadow: 0 0 18px rgba(55, 214, 122, .42); }
+}
 
 .reveal { margin-top: 16px; text-align: center; font-family: system-ui, sans-serif; }
 #revealHead { font-size: 18px; font-weight: 800; margin: 0 0 4px; }
@@ -115,12 +126,19 @@ main { flex: 1; width: 100%; max-width: 620px; margin: 0 auto; padding: 14px 16p
 #revealAns { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
 
 /* ---------- results ---------- */
-#verdict { text-align: center; font-size: clamp(20px, 5.5vw, 27px); margin: 6px 0 4px; }
+#verdict {
+  display: grid; min-height: 2.4em; place-items: center; text-align: center;
+  font-size: clamp(20px, 5.5vw, 27px); line-height: 1.2; margin: 6px 0 4px;
+}
 .scoreline { text-align: center; }
 #finalScore { font-family: system-ui, sans-serif; font-size: 60px; font-weight: 900; color: var(--gold); }
 .scoreline .pts { font-family: system-ui, sans-serif; color: var(--muted); font-weight: 700; margin-left: 6px; }
 .score-detail { text-align: center; color: var(--muted); font-family: system-ui, sans-serif; font-size: 14px; }
-.squares { text-align: center; font-size: 28px; letter-spacing: 4px; margin: 10px 0 4px; }
+.squares { min-height: 34px; text-align: center; font-size: 28px; letter-spacing: 4px; margin: 10px 0 4px; }
+.result-square { display: inline-block; animation: square-in .18s ease-out both; }
+#verdict.verdict-in { animation: verdict-in .28s ease-out both; }
+@keyframes square-in { from { opacity: 0; transform: translateY(5px) scale(.75); } }
+@keyframes verdict-in { from { opacity: 0; transform: translateY(6px); } }
 
 .share-row { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-top: 14px; }
 .share-done { color: var(--green); font-family: system-ui, sans-serif; font-size: 13px; }
@@ -233,5 +251,18 @@ footer a { color: var(--lake); text-decoration: none; }
 .duel-row.win { background: #f2e4b7; }
 .duel-result { color: #555; font-size: 13px; font-variant-numeric: tabular-nums; }
 .duel-dots { grid-column: 1 / -1; font-size: 20px; }
+.duel-reveal .duel-row { animation: duel-row-in .28s ease-out both; }
+.duel-reveal .duel-row:nth-child(2) { animation-delay: .3s; }
+.duel-reveal #duelDoneHead { animation: duel-headline-in .32s .62s ease-out both; }
+@keyframes duel-row-in { from { opacity: 0; transform: translateY(7px); } }
+@keyframes duel-headline-in {
+  from { opacity: 0; transform: translateY(8px) scale(.96); }
+}
 
-@media (prefers-reduced-motion: reduce) { .screen { animation: none; } .btn-primary { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .screen, .btn-primary, #clock.hurry, .choice.flare, .result-square,
+  #verdict.verdict-in, .duel-reveal .duel-row, .duel-reveal #duelDoneHead {
+    animation: none;
+    transition: none;
+  }
+}

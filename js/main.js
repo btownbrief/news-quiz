@@ -62,6 +62,57 @@ let duelSubmitted = false;
 let duelPendingResult = null;
 let duelPanelIntent = 'host';
 let preserveDuelSession = false;
+let visualRunId = 0;
+let visualFrame = null;
+const visualTimers = new Set();
+let duelCompletionObserved = false;
+let duelDoneRendered = false;
+let revealCompletedDuel = false;
+let duelReconnecting = false;
+let activeResultReveal = null;
+let suppressTransitionEffects = false;
+let restoreTimer = null;
+
+function beginVisualRun() {
+  visualRunId++;
+  visualTimers.forEach((timer) => clearTimeout(timer));
+  visualTimers.clear();
+  if (visualFrame !== null) cancelAnimationFrame(visualFrame);
+  visualFrame = null;
+  return visualRunId;
+}
+
+function visualDelay(callback, delay, runId) {
+  const timer = setTimeout(() => {
+    visualTimers.delete(timer);
+    if (runId === visualRunId) callback();
+  }, delay);
+  visualTimers.add(timer);
+}
+
+function effectsSuppressed() {
+  return suppressTransitionEffects || matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+document.addEventListener('visibilitychange', () => {
+  clearTimeout(restoreTimer);
+  if (!document.hidden) {
+    restoreTimer = setTimeout(() => { suppressTransitionEffects = false; }, 300);
+    return;
+  }
+  suppressTransitionEffects = true;
+  if (answered && !finished && !$('gameScreen').classList.contains('hidden') &&
+      $('reveal').classList.contains('hidden')) {
+    beginVisualRun();
+    $('choices').children[questions[qIndex].answer]?.classList.add('correct');
+    $('reveal').classList.remove('hidden');
+  }
+  if (activeResultReveal) {
+    const pending = activeResultReveal;
+    revealResults(pending.record, pending.verdict, false, beginVisualRun());
+  }
+  if (duelDoneRendered) $('duelDone').classList.remove('duel-reveal');
+});
 
 // ------------------------------------------------------------ played-state
 function loadPlayed() {
@@ -123,14 +174,28 @@ function tick() {
   const fill = $('timerFill');
   fill.style.width = `${(left / QUIZ_MS) * 100}%`;
   fill.classList.toggle('hurry', left < 10000);
-  $('clock').textContent = Math.ceil(left / 1000);
+  const clock = $('clock');
+  clock.textContent = Math.ceil(left / 1000);
+  clock.classList.toggle('hurry', left < 10000);
+  clock.classList.toggle('critical', left <= 3000);
   if (left <= 0 && !finished) timeUp();
 }
 
+function renderMomentum() {
+  const row = $('momentum');
+  row.classList.toggle('hidden', DUEL_REQUESTED);
+  if (DUEL_REQUESTED) return;
+  const pending = Math.max(0, questions.length - results.length);
+  row.textContent = `${results.map((r) => (r.correct ? '🟩' : '🟥')).join('')}${'⬜'.repeat(pending)}`;
+  row.setAttribute('aria-label', `${results.filter((r) => r.correct).length} correct after ${results.length} of ${questions.length} questions`);
+}
+
 function showQuestion() {
+  beginVisualRun();
   answered = false;
   const q = questions[qIndex];
   $('reveal').classList.add('hidden');
+  renderMomentum();
   $('qNum').textContent = `Q${qIndex + 1} / ${questions.length}`;
   $('qText').textContent = q.q;
   const box = $('choices');
@@ -147,15 +212,18 @@ function showQuestion() {
 function answer(choiceIdx) {
   if (answered || finished) return;
   answered = true;
+  const runId = visualRunId;
   const q = questions[qIndex];
   const correct = choiceIdx === q.answer;
+  const choices = [...$('choices').children];
 
-  [...$('choices').children].forEach((b, i) => {
+  choices.forEach((b, i) => {
     b.disabled = true;
-    if (i === q.answer) b.classList.add('correct');
-    else if (i === choiceIdx) b.classList.add('wrong');
-    else b.classList.add('dim');
+    if (i !== q.answer) b.classList.add('dim');
+    if (i === choiceIdx && !correct) b.classList.add('wrong');
   });
+  results.push({ correct });
+  renderMomentum();
 
   const head = $('revealHead');
   if (correct) { head.textContent = '✅ Correct!'; head.className = 'good'; }
@@ -165,8 +233,12 @@ function answer(choiceIdx) {
   }
   $('revealAns').textContent = `Answer: ${q.options[q.answer]}`;
   $('nextBtn').textContent = qIndex === questions.length - 1 ? 'See your score 🏁' : 'Next question →';
-  $('reveal').classList.remove('hidden');
-  results.push({ correct });
+  const showAnswer = () => {
+    choices[q.answer].classList.add('correct', 'flare');
+    $('reveal').classList.remove('hidden');
+  };
+  if (effectsSuppressed()) showAnswer();
+  else visualDelay(showAnswer, 140, runId);
 }
 
 $('nextBtn').addEventListener('click', () => {
@@ -204,18 +276,66 @@ function finishQuiz() {
 
 // ------------------------------------------------------------ results
 function showResults(record, justFinished) {
+  const runId = beginVisualRun();
   $('introScreen').classList.add('hidden');
   $('gameScreen').classList.add('hidden');
   $('resultsScreen').classList.remove('hidden');
 
-  $('verdict').textContent = VERDICTS.find(([min]) => record.score >= min)[1];
-  $('finalScore').textContent = record.score;
+  const verdict = VERDICTS.find(([min]) => record.score >= min)[1];
   $('scoreDetail').textContent =
     `${record.correct} / ${record.total} correct${record.bonus ? ` · +${record.bonus} speed bonus` : ''}`;
-  $('squares').textContent = record.squares || '';
+  revealResults(record, verdict, justFinished, runId);
 
   startCountdownNote();
   updateLeaderboard(justFinished ? record : loadPlayed());
+}
+
+function revealResults(record, verdict, animate, runId) {
+  const score = $('finalScore');
+  const squares = $('squares');
+  const verdictBox = $('verdict');
+  verdictBox.classList.remove('verdict-in');
+  if (!animate || effectsSuppressed()) {
+    activeResultReveal = null;
+    score.textContent = record.score;
+    squares.textContent = record.squares || '';
+    verdictBox.textContent = verdict;
+    return;
+  }
+
+  score.textContent = '0';
+  squares.textContent = '';
+  verdictBox.textContent = '';
+  activeResultReveal = { record, verdict };
+  const started = performance.now();
+  const count = (now) => {
+    if (runId !== visualRunId) return;
+    const progress = Math.min(1, (now - started) / 650);
+    score.textContent = Math.round(record.score * (1 - ((1 - progress) ** 3)));
+    if (progress < 1) {
+      visualFrame = requestAnimationFrame(count);
+      return;
+    }
+    visualFrame = null;
+    revealResultSquare(record.squares || '', 0, verdict, runId);
+  };
+  visualFrame = requestAnimationFrame(count);
+}
+
+function revealResultSquare(resultSquares, index, verdict, runId) {
+  if (runId !== visualRunId) return;
+  const marks = [...resultSquares];
+  if (index >= marks.length) {
+    activeResultReveal = null;
+    $('verdict').textContent = verdict;
+    $('verdict').classList.add('verdict-in');
+    return;
+  }
+  const mark = document.createElement('span');
+  mark.className = 'result-square';
+  mark.textContent = marks[index];
+  $('squares').appendChild(mark);
+  visualDelay(() => revealResultSquare(resultSquares, index + 1, verdict, runId), 95, runId);
 }
 
 $('shareBtn').addEventListener('click', async () => {
@@ -416,10 +536,11 @@ function hideGameScreens() {
 }
 
 function showDuelWaiting(result, message, retry = false) {
+  beginVisualRun();
   hideGameScreens();
   $('duelDone').classList.add('hidden');
   $('duelWaitHead').textContent = retry ? 'Score not filed yet' : 'Your score is filed 🗞️';
-  $('duelWaitDots').textContent = duelDots(result);
+  $('duelWaitDots').textContent = '';
   $('duelWaitMsg').textContent = message ||
     `${duelOpponent().name || 'Your rival'} is still taking the quiz.`;
   $('duelRetryBtn').classList.toggle('hidden', !retry);
@@ -427,6 +548,7 @@ function showDuelWaiting(result, message, retry = false) {
 }
 
 function showDuelProblem(err) {
+  beginVisualRun();
   clearInterval(timerInt);
   finished = true;
   if (duel) duel.stop();
@@ -466,6 +588,9 @@ function appendDuelRow(container, label, result, winner) {
 
 function showDuelDone() {
   if (!duel || !duel.isComplete()) return;
+  if (duelDoneRendered) return;
+  duelDoneRendered = true;
+  beginVisualRun();
   duel.stop();
   clearInterval(timerInt);
   hideGameScreens();
@@ -486,10 +611,17 @@ function showDuelDone() {
   rows.innerHTML = '';
   appendDuelRow(rows, 'You', mine, outcome >= 0);
   appendDuelRow(rows, opponent.name || 'Rival', theirs, outcome <= 0);
+  $('duelDone').classList.toggle('duel-reveal', revealCompletedDuel);
   $('duelRematchBtn').classList.remove('hidden');
   $('duelRematchBtn').disabled = false;
   $('duelExitBtn').textContent = 'Back to the weekly quiz';
   $('duelDone').classList.remove('hidden');
+}
+
+function showNewlyCompletedDuel() {
+  revealCompletedDuel = !duelCompletionObserved && !effectsSuppressed();
+  duelCompletionObserved = true;
+  showDuelDone();
 }
 
 async function duelSubmit(result) {
@@ -511,7 +643,7 @@ async function duelSubmit(result) {
   duelSubmitted = true;
   duelPendingResult = null;
   renderDuelBar();
-  if (duel.isComplete()) showDuelDone();
+  if (duel.isComplete()) showNewlyCompletedDuel();
   else showDuelWaiting(duel.myResult());
   return true;
 }
@@ -539,6 +671,7 @@ async function bootDuel() {
   }
 
   duelSubmitted = duel.myResult() !== null;
+  duelCompletionObserved = duel.isComplete();
   renderDuelBar();
   const payloadAtBoot = duel.payload;
   duel.start({
@@ -547,8 +680,13 @@ async function bootDuel() {
         location.reload();
         return;
       }
+      const suppressReveal = duelReconnecting;
+      duelReconnecting = false;
       renderDuelBar();
-      if (duel.isComplete()) showDuelDone();
+      if (duel.isComplete()) {
+        if (suppressReveal) duelCompletionObserved = true;
+        showNewlyCompletedDuel();
+      }
       else if (duelOpponent().left) showDuelProblem({ code: 'opponent_left' });
       else if (duelSubmitted && !duelPendingResult) showDuelWaiting(duel.myResult());
     },
@@ -557,6 +695,7 @@ async function bootDuel() {
         duelClearSession(DUEL_GAME);
         showDuelProblem(err);
       } else {
+        duelReconnecting = true;
         renderDuelBar(' — reconnecting');
       }
     },
