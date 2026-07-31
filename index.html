@@ -16,10 +16,12 @@
 </head>
 <body>
   <header>
+    <button class="duel-entry" id="duelBtn" aria-label="Challenge a friend">⚔️</button>
     <div class="kicker">BTOWN GAMES · DAILY EDITION</div>
     <h1>THE <span>NEWS QUIZ</span></h1>
     <div class="rule"></div>
   </header>
+  <div class="duelbar hidden" id="duelBar"></div>
 
   <main>
     <!-- Intro -->
@@ -33,6 +35,7 @@
         </ul>
       </div>
       <button class="btn-primary" id="startBtn">Take today's quiz</button>
+      <button class="chip duel-abandon hidden" id="duelIntroExitBtn">Forfeit and return to the weekly quiz</button>
     </section>
 
     <!-- Game -->
@@ -51,6 +54,7 @@
         <p id="revealAns"></p>
         <button class="btn-primary" id="nextBtn">Next question →</button>
       </div>
+      <button class="chip duel-abandon hidden" id="duelForfeitBtn">Forfeit this challenge</button>
     </section>
 
     <!-- Results -->
@@ -87,6 +91,62 @@
   <footer>
     A <strong>Btown Games</strong> production · Read the <a href="https://www.btownbrief.com" target="_blank" rel="noopener">BTown Brief</a>
   </footer>
+
+  <!-- Duel: two phones, this week's questions, one seeded order -->
+  <div class="overlay hidden" id="duelOverlay">
+    <div class="modal">
+      <button class="modal-close" data-duel-close aria-label="Close">&times;</button>
+      <h2>⚔️ Challenge a friend</h2>
+      <p>Beat my score on this week's Brief: the same questions, in the same order, on two phones.</p>
+      <button class="btn-primary modal-action" id="hostBtn">Start a challenge — get a code</button>
+      <button class="btn-primary modal-action" id="joinBtn">Join with a friend's code</button>
+      <button class="chip hidden" id="rejoinBtn"></button>
+      <p class="duel-error hidden" id="duelMenuError"></p>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="onlinePanel" data-static>
+    <div class="modal">
+      <h2 id="opTitle">Start a challenge</h2>
+      <label class="duel-label" for="opName">Your byline</label>
+      <input class="duel-input" id="opName" maxlength="24" autocomplete="nickname" placeholder="News hound" />
+      <div id="opCodeWrap" class="hidden">
+        <label class="duel-label" for="opCode">Challenge code</label>
+        <input class="duel-input duel-code" id="opCode" maxlength="4" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="ABCD" />
+      </div>
+      <p id="opError" class="duel-error hidden"></p>
+      <button class="btn-primary modal-action" id="opGo">Go</button>
+      <button class="chip" id="opCancel">Back</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="lobby" data-static>
+    <div class="modal">
+      <h2>Send this code to your rival</h2>
+      <div id="lobbyCode"></div>
+      <p id="lobbyStatus">They tap ⚔️, choose <strong>Join</strong>, and enter it. The current quiz opens for both of you.</p>
+      <button class="chip" id="lobbyCancel">Call it off</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="duelWait" data-static>
+    <div class="modal">
+      <h2 id="duelWaitHead">Your score is filed 🗞️</h2>
+      <div class="duel-wait-dots" id="duelWaitDots"></div>
+      <p id="duelWaitMsg">Waiting for your rival to finish…</p>
+      <button class="btn-primary modal-action hidden" id="duelRetryBtn">Retry filing my score</button>
+      <button class="chip" id="duelWaitExitBtn">Back to weekly — rejoin later</button>
+    </div>
+  </div>
+
+  <div class="overlay hidden" id="duelDone" data-static>
+    <div class="modal">
+      <h2 id="duelDoneHead"></h2>
+      <div id="duelDoneRows"></div>
+      <button class="btn-primary modal-action" id="duelRematchBtn">↻ Rematch this week's quiz</button>
+      <button class="chip" id="duelExitBtn">Back to the weekly quiz</button>
+    </div>
+  </div>
 
   <script type="module" src="js/main.js"></script>
 </body>
