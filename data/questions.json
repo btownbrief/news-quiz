@@ -1,60 +1,137 @@
 {
-  "edition": "2026-07-27",
+  "edition": "2026-07-31",
   "questions": [
     {
       "id": 1,
-      "q": "What will South Burlington use for infill in Vermont's first PFAS free synthetic turf field?",
+      "q": "What did Susan and Rick Cote, who own the weekly Williston Observer, open in Williston in late June?",
       "options": [
-        "Crumb rubber",
-        "Beach sand",
-        "Small wood chip pellets",
-        "Recycled glass"
+        "A bookstore and café",
+        "A brewery",
+        "A print shop",
+        "A movie theater"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "id": 2,
-      "q": "What was the vote when Healthy Living employees decided to unionize on April 8?",
+      "q": "Who directed the Vermont State Police to start patrolling downtown Burlington?",
       "options": [
-        "78 to 64",
-        "105 to 69",
-        "95 to 91",
-        "120 to 30"
+        "Mayor Emma Mulvaney-Stanak",
+        "Gov. Phil Scott",
+        "The Burlington City Council",
+        "The University of Vermont"
       ],
       "answer": 1
     },
     {
       "id": 3,
-      "q": "What color flagging marks the cut invasive buckthorn that anyone can pull at Oakledge Park?",
+      "q": "What did Burlington's Democratic city councilors name the resolution they will bring in August?",
       "options": [
-        "Blue",
-        "Yellow",
-        "Orange",
-        "Pink"
-      ],
-      "answer": 2
-    },
-    {
-      "id": 4,
-      "q": "What did UVM researchers determine is causing the black splotches on Lake Memphremagog's brown bullhead catfish?",
-      "options": [
-        "A parasite infestation",
-        "Transmissible melanoma",
-        "PFAS contamination",
-        "A fungal infection"
+        "Safe Streets Now",
+        "Burlington Forward",
+        "The Queen City Plan",
+        "Downtown First"
       ],
       "answer": 1
     },
     {
-      "id": 5,
-      "q": "Which two parks appeared in Plan BTV New North End renderings that alarmed residents?",
+      "id": 4,
+      "q": "How many free performances does the 18th Festival of Fools feature across the weekend?",
       "options": [
-        "Oakledge and Battery",
-        "Leddy and Waterfront",
-        "Starr Farm and Ethan Allen",
-        "Callahan and Schmanska"
+        "More than 20",
+        "More than 40",
+        "More than 70",
+        "More than 100"
       ],
       "answer": 2
+    },
+    {
+      "id": 5,
+      "q": "When is the 2026 Vermont primary election?",
+      "options": [
+        "August 4",
+        "August 11",
+        "September 1",
+        "November 3"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 6,
+      "q": "Which dog took the \"Worst Breath\" title at the Winooski Farmers Market dog show?",
+      "options": [
+        "Ahki the husky",
+        "Scar",
+        "Kulu the Australian shepherd",
+        "Penelope the Newfoundland"
+      ],
+      "answer": 3
+    },
+    {
+      "id": 7,
+      "q": "In the late July UNH poll of likely Democratic voters, what share were still undecided in the governor's race?",
+      "options": [
+        "22 percent",
+        "35 percent",
+        "52 percent",
+        "70 percent"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 8,
+      "q": "How much is GlobalFoundries expected to receive under its letter of intent with the Commerce Department?",
+      "options": [
+        "$100 million",
+        "$300 million",
+        "$1 billion",
+        "$17.9 million"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 9,
+      "q": "Where did Jordan Klepper play his Burlington show?",
+      "options": [
+        "Higher Ground",
+        "Vermont Comedy Club",
+        "The Flynn Main Stage",
+        "Radio Bean"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 10,
+      "q": "South Burlington broke ground on a bike and pedestrian bridge crossing what?",
+      "options": [
+        "The Winooski River",
+        "Interstate 89",
+        "Shelburne Road",
+        "The rail yard"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 11,
+      "q": "The diner car now holding Burl's Downtown Kitchenette ran under what name from 1954 to 2007?",
+      "options": [
+        "The Oasis Diner",
+        "Henry's Diner",
+        "The Parkway Diner",
+        "El Cortijo"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 12,
+      "q": "What positioning line did Vermont pick for its first dedicated tourism brand?",
+      "options": [
+        "Green Mountain State",
+        "State of Inspiration",
+        "Unspoiled Vermont",
+        "Naturally Vermont"
+      ],
+      "answer": 1
     }
   ]
 }
