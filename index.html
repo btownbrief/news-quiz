@@ -45,11 +45,12 @@
         <span id="qNum"></span>
         <span class="clock-wrap">⏱️ <span id="clock">60</span>s</span>
       </div>
+      <div id="momentum" class="momentum" aria-label="Quiz progress"></div>
       <div class="qcard">
         <p id="qText"></p>
         <div id="choices"></div>
       </div>
-      <div id="reveal" class="reveal hidden">
+      <div id="reveal" class="reveal hidden" role="status" aria-live="polite">
         <p id="revealHead"></p>
         <p id="revealAns"></p>
         <button class="btn-primary" id="nextBtn">Next question →</button>
