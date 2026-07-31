@@ -5,15 +5,26 @@ import { loadEdition } from './questions.js';
 import {
   lbEnabled, getName, submitScore, renamePlayer, fetchTop, monthLabel, playerId,
 } from './leaderboard.js';
+import {
+  Duel, savedSession as duelSavedSession, clearSession as duelClearSession,
+  getName as duelGetName,
+} from './duel.js';
+import {
+  questionsForDuel, makeDuelResult, makeDuelForfeit, compareDuelResults,
+} from './quiz-duel.js';
 
 const $ = (id) => document.getElementById(id);
 const QUIZ_MS = 60000;          // one clock for the whole quiz
 const POINTS_PER_Q = 200;       // + up to 60 speed bonus (seconds left at finish)
 const PLAYED_KEY = 'news-quiz-played';
+const DUEL_GAME = 'news-quiz';
+
+const PAGE_PARAMS = new URLSearchParams(location.search);
 
 // ?preview=1 lets the editor play/replay the current edition without saving
 // state or touching the leaderboard — for checking a new edition before it ships.
-const PREVIEW = new URLSearchParams(location.search).has('preview');
+const PREVIEW = PAGE_PARAMS.has('preview');
+const DUEL_REQUESTED = PAGE_PARAMS.get('duel') === '1';
 
 const VERDICTS = [
   [1000, 'Front-Page Reader 📰 You devour the Brief.'],
@@ -24,6 +35,19 @@ const VERDICTS = [
   [0, 'Did you even read the Brief? 📭'],
 ];
 
+const FRIENDLY_DUEL_ERRORS = {
+  not_found: 'That challenge has expired. Head back to this week’s quiz.',
+  not_seated: 'This phone no longer has a seat in that challenge.',
+  room_full: 'That challenge already has two readers.',
+  room_started: 'That challenge already started without you.',
+  not_ready: 'Friend challenges are not switched on yet — check back soon.',
+  offline: 'The newsroom connection dropped. Your challenge is still saved.',
+  opponent_left: 'Your rival left the challenge before the scores were compared.',
+  stale_challenge: 'That challenge belongs to an earlier Brief and can no longer be played.',
+  bad_seed: 'That challenge code carries a damaged quiz order.',
+  empty_challenge: 'There are no published questions for this challenge.',
+};
+
 let edition = 'default';
 let questions = [];
 let qIndex = 0;
@@ -32,12 +56,22 @@ let deadline = 0;
 let timerInt = null;
 let answered = false;
 let finished = false;
+let quizStartedAt = 0;
+let duel = null;
+let duelSubmitted = false;
+let duelPendingResult = null;
+let duelPanelIntent = 'host';
+let preserveDuelSession = false;
 
 // ------------------------------------------------------------ played-state
 function loadPlayed() {
   try { return JSON.parse(localStorage.getItem(PLAYED_KEY)) || {}; } catch { return {}; }
 }
-function savePlayed(obj) { if (!PREVIEW) localStorage.setItem(PLAYED_KEY, JSON.stringify(obj)); }
+function savePlayed(obj) {
+  if (!PREVIEW && !DUEL_REQUESTED) {
+    localStorage.setItem(PLAYED_KEY, JSON.stringify(obj));
+  }
+}
 
 // ------------------------------------------------------------ boot
 try {
@@ -53,12 +87,17 @@ if (questions.length === 0) {
   $('introScreen').innerHTML = `<p class="load-err">No questions published yet — check back after the next Brief.</p>`;
 } else {
   $('qCount').textContent = questions.length;
-  const played = loadPlayed();
-  if (!PREVIEW && played.edition === edition) {
-    // already played this edition — straight to results, no replay
-    showResults(played, false);
+  if (DUEL_REQUESTED) {
+    const ready = await bootDuel();
+    if (ready && !duelSubmitted) $('startBtn').addEventListener('click', startGame);
+  } else {
+    const played = loadPlayed();
+    if (!PREVIEW && played.edition === edition) {
+      // already played this edition — straight to results, no replay
+      showResults(played, false);
+    }
+    $('startBtn').addEventListener('click', startGame);
   }
-  $('startBtn').addEventListener('click', startGame);
 }
 
 // ------------------------------------------------------------ game flow
@@ -67,12 +106,14 @@ function startGame() {
   $('introScreen').classList.add('hidden');
   $('resultsScreen').classList.add('hidden');
   $('gameScreen').classList.remove('hidden');
+  $('duelForfeitBtn').classList.toggle('hidden', !DUEL_REQUESTED);
   startTimer();
   showQuestion();
 }
 
 function startTimer() {
   clearInterval(timerInt);
+  quizStartedAt = Date.now();
   deadline = Date.now() + QUIZ_MS;
   timerInt = setInterval(tick, 100);
   tick();
@@ -145,6 +186,11 @@ function finishQuiz() {
   finished = true;
   clearInterval(timerInt);
   const correctCount = results.filter((r) => r.correct).length;
+  if (DUEL_REQUESTED) {
+    const elapsed = Math.min(QUIZ_MS, Math.max(0, Date.now() - quizStartedAt));
+    void duelSubmit(makeDuelResult(results, elapsed));
+    return;
+  }
   const secondsLeft = Math.max(0, Math.floor((deadline - Date.now()) / 1000));
   // speed bonus only rewards a finished quiz; capped by the clock (≤60)
   const bonus = correctCount === questions.length ? secondsLeft : 0;
@@ -152,8 +198,7 @@ function finishQuiz() {
   const squares = results.map((r) => (r.correct ? '🟩' : '🟥')).join('');
 
   const record = { edition, score, correct: correctCount, total: questions.length, squares, bonus, submitted: false };
-  const played = loadPlayed();
-  if (!PREVIEW) { savePlayed(record); }
+  savePlayed(record);
   showResults(record, true);
 }
 
@@ -196,14 +241,14 @@ const lbForm = $('lbForm'), lbNameInput = $('lbNameInput');
 const lbThisBtn = $('lbThisBtn'), lbLastBtn = $('lbLastBtn'), lbRenameBtn = $('lbRenameBtn');
 let lbMonthOffset = 0;
 
-if (lbEnabled()) {
+if (!DUEL_REQUESTED && lbEnabled()) {
   lbBox.classList.remove('hidden');
   lbThisBtn.textContent = `🏆 ${monthLabel(0)}`;
   lbLastBtn.textContent = monthLabel(-1);
 }
 
 async function submitOnce(record) {
-  if (PREVIEW || !record) return;
+  if (PREVIEW || DUEL_REQUESTED || !record) return;
   const played = loadPlayed();
   if (!played || played.submitted || played.score <= 0 || !getName()) return;
   await submitScore(played.score);
@@ -212,7 +257,7 @@ async function submitOnce(record) {
 }
 
 async function updateLeaderboard(record) {
-  if (!lbEnabled()) return;
+  if (DUEL_REQUESTED || !lbEnabled()) return;
   if (!getName()) {
     lbForm.classList.remove('hidden');
     lbRenameBtn.classList.add('hidden');
@@ -252,6 +297,7 @@ async function renderBoard() {
 }
 
 $('lbSaveBtn').addEventListener('click', async () => {
+  if (DUEL_REQUESTED) return;
   const name = lbNameInput.value.trim();
   if (!name) { lbNameInput.focus(); return; }
   try {
@@ -293,3 +339,419 @@ document.addEventListener('keydown', (e) => {
   const n = Number(e.key);
   if (n >= 1 && n <= 4) answer(n - 1);
 });
+
+// ------------------------------------------------------------ duel mode
+// The duel payload is { edition, seed }. The edition pins the current quiz
+// content and the seed pins question order. Duel results are isolated room
+// state only: { score, total, ms, answers }, plus a forfeit flag when someone
+// explicitly leaves early. Weekly record and leaderboard paths are gated above.
+
+function duelFriendly(err) {
+  if (err && err.code === 'wrong_game') {
+    const game = String(err.detail || 'another game').replace(/-/g, ' ');
+    return `That code belongs to ${game}, not the News Quiz.`;
+  }
+  return (err && FRIENDLY_DUEL_ERRORS[err.code]) || 'The newsroom hit a snag. Please try again.';
+}
+
+function randomDuelPayload() {
+  const seed = new Uint32Array(1);
+  crypto.getRandomValues(seed);
+  return { edition, seed: seed[0] };
+}
+
+function duelUrl() {
+  return '?duel=1';
+}
+
+function duelActive() {
+  return DUEL_REQUESTED && duel !== null;
+}
+
+function duelOpponent() {
+  return duel ? (duel.others()[0] || {}) : {};
+}
+
+function sameDuelPayload(first, second) {
+  return first?.edition === second?.edition && first?.seed === second?.seed;
+}
+
+function prepareDuelIntro() {
+  $('duelBtn').classList.add('hidden');
+  document.querySelector('.kicker').textContent = 'BTOWN GAMES · HEAD-TO-HEAD EDITION';
+  document.querySelector('.lede').textContent = 'Who read this week’s Brief more closely?';
+  const rules = [...document.querySelectorAll('.rules li')];
+  rules[0].textContent = `🗞️ ${questions.length} current questions in one shared order`;
+  rules[1].textContent = '⏱️ 60 seconds — most correct wins, then fastest time';
+  rules[2].textContent = '🛡️ This challenge will not use up or replace your weekly play';
+  $('startBtn').textContent = 'Start the challenge';
+  $('duelIntroExitBtn').classList.remove('hidden');
+}
+
+function renderDuelBar(note = '') {
+  if (!duel) return;
+  const opponent = duelOpponent();
+  const who = opponent.name ? `vs ${opponent.name}` : 'waiting for your rival';
+  let status = note;
+  if (!status && opponent.left && !duel.isComplete()) status = ' — your rival left';
+  else if (!status && duelSubmitted && !duel.isComplete()) status = ' — waiting on their score';
+  $('duelBar').textContent = `⚔️ CHALLENGE ${duel.code} · ${who}${status}`;
+  $('duelBar').classList.remove('hidden');
+}
+
+function duelDots(result) {
+  return Array.isArray(result?.answers)
+    ? result.answers.map((correct) => (correct ? '🟢' : '🔴')).join('')
+    : '';
+}
+
+function formatDuelMs(ms) {
+  return `${(Math.max(0, Number(ms) || 0) / 1000).toFixed(3)}s`;
+}
+
+function hideGameScreens() {
+  $('introScreen').classList.add('hidden');
+  $('gameScreen').classList.add('hidden');
+  $('resultsScreen').classList.add('hidden');
+}
+
+function showDuelWaiting(result, message, retry = false) {
+  hideGameScreens();
+  $('duelDone').classList.add('hidden');
+  $('duelWaitHead').textContent = retry ? 'Score not filed yet' : 'Your score is filed 🗞️';
+  $('duelWaitDots').textContent = duelDots(result);
+  $('duelWaitMsg').textContent = message ||
+    `${duelOpponent().name || 'Your rival'} is still taking the quiz.`;
+  $('duelRetryBtn').classList.toggle('hidden', !retry);
+  $('duelWait').classList.remove('hidden');
+}
+
+function showDuelProblem(err) {
+  clearInterval(timerInt);
+  finished = true;
+  if (duel) duel.stop();
+  preserveDuelSession = ![
+    'not_found', 'not_seated', 'room_started', 'stale_challenge', 'opponent_left',
+  ].includes(err?.code);
+  hideGameScreens();
+  $('duelWait').classList.add('hidden');
+  $('duelDoneHead').textContent =
+    err?.code === 'opponent_left' ? 'CHALLENGE ENDED' : 'CHALLENGE PAUSED';
+  const rows = $('duelDoneRows');
+  rows.innerHTML = '';
+  const message = document.createElement('p');
+  message.textContent = duelFriendly(err);
+  rows.appendChild(message);
+  $('duelRematchBtn').classList.add('hidden');
+  $('duelExitBtn').textContent = 'Back to the weekly quiz';
+  $('duelDone').classList.remove('hidden');
+}
+
+function appendDuelRow(container, label, result, winner) {
+  const row = document.createElement('div');
+  row.className = `duel-row${winner ? ' win' : ''}`;
+  const name = document.createElement('span');
+  name.textContent = label;
+  const summary = document.createElement('span');
+  summary.className = 'duel-result';
+  summary.textContent = result.forfeit
+    ? 'Forfeited'
+    : `${result.score}/${result.total} · ${formatDuelMs(result.ms)}`;
+  const dots = document.createElement('span');
+  dots.className = 'duel-dots';
+  dots.textContent = duelDots(result);
+  row.append(name, summary, dots);
+  container.appendChild(row);
+}
+
+function showDuelDone() {
+  if (!duel || !duel.isComplete()) return;
+  duel.stop();
+  clearInterval(timerInt);
+  hideGameScreens();
+  $('duelWait').classList.add('hidden');
+  preserveDuelSession = false;
+
+  const mine = duel.myResult();
+  const opponent = duelOpponent();
+  const theirs = opponent.result;
+  const outcome = compareDuelResults(mine, theirs);
+  $('duelDoneHead').textContent = outcome === 0
+    ? 'DEADLINE DRAW! 🗞️'
+    : outcome > 0
+      ? 'YOU WIN THE HEADLINE! 🏆'
+      : `${opponent.name || 'Your rival'} wins this edition`;
+
+  const rows = $('duelDoneRows');
+  rows.innerHTML = '';
+  appendDuelRow(rows, 'You', mine, outcome >= 0);
+  appendDuelRow(rows, opponent.name || 'Rival', theirs, outcome <= 0);
+  $('duelRematchBtn').classList.remove('hidden');
+  $('duelRematchBtn').disabled = false;
+  $('duelExitBtn').textContent = 'Back to the weekly quiz';
+  $('duelDone').classList.remove('hidden');
+}
+
+async function duelSubmit(result) {
+  if (!duel || duelSubmitted) return false;
+  duelPendingResult = result;
+  renderDuelBar(' — filing your score');
+  showDuelWaiting(result, 'Filing your score in the challenge…');
+  try {
+    await duel.submitResult(result);
+  } catch (err) {
+    if (err && err.code === 'opponent_left') {
+      showDuelProblem(err);
+      return false;
+    }
+    renderDuelBar(' — score needs another try');
+    showDuelWaiting(result, duelFriendly(err), true);
+    return false;
+  }
+  duelSubmitted = true;
+  duelPendingResult = null;
+  renderDuelBar();
+  if (duel.isComplete()) showDuelDone();
+  else showDuelWaiting(duel.myResult());
+  return true;
+}
+
+async function bootDuel() {
+  try {
+    duel = await Duel.resume({ game: DUEL_GAME });
+    questions = questionsForDuel(questions, edition, duel.payload);
+  } catch (err) {
+    if (err && err.code === 'stale_challenge' && duel) {
+      await duel.leave();
+      duel = null;
+    } else if (err && ['not_found', 'not_seated', 'room_started'].includes(err.code)) {
+      duelClearSession(DUEL_GAME);
+    }
+    showDuelProblem(err);
+    return false;
+  }
+
+  prepareDuelIntro();
+  if (duel.status === 'waiting') {
+    hideGameScreens();
+    openDuelLobby(duel);
+    return false;
+  }
+
+  duelSubmitted = duel.myResult() !== null;
+  renderDuelBar();
+  const payloadAtBoot = duel.payload;
+  duel.start({
+    onChange: () => {
+      if (!sameDuelPayload(duel.payload, payloadAtBoot)) {
+        location.reload();
+        return;
+      }
+      renderDuelBar();
+      if (duel.isComplete()) showDuelDone();
+      else if (duelOpponent().left) showDuelProblem({ code: 'opponent_left' });
+      else if (duelSubmitted && !duelPendingResult) showDuelWaiting(duel.myResult());
+    },
+    onError: (err) => {
+      if (err && ['not_found', 'not_seated'].includes(err.code)) {
+        duelClearSession(DUEL_GAME);
+        showDuelProblem(err);
+      } else {
+        renderDuelBar(' — reconnecting');
+      }
+    },
+  });
+
+  if (duel.isComplete()) showDuelDone();
+  else if (duelOpponent().left) showDuelProblem({ code: 'opponent_left' });
+  else if (duelSubmitted) showDuelWaiting(duel.myResult());
+  return true;
+}
+
+$('duelBtn').addEventListener('click', () => {
+  refreshDuelRejoin();
+  $('duelMenuError').classList.add('hidden');
+  $('duelOverlay').classList.remove('hidden');
+});
+$('hostBtn').addEventListener('click', () => openDuelPanel('host'));
+$('joinBtn').addEventListener('click', () => openDuelPanel('join'));
+$('opCancel').addEventListener('click', () => $('onlinePanel').classList.add('hidden'));
+$('opGo').addEventListener('click', duelGo);
+$('lobbyCancel').addEventListener('click', cancelDuelLobby);
+$('rejoinBtn').addEventListener('click', rejoinDuel);
+$('duelRetryBtn').addEventListener('click', () => {
+  if (duelPendingResult) void duelSubmit(duelPendingResult);
+});
+$('duelIntroExitBtn').addEventListener('click', forfeitDuel);
+$('duelForfeitBtn').addEventListener('click', forfeitDuel);
+$('duelWaitExitBtn').addEventListener('click', pauseDuel);
+$('duelRematchBtn').addEventListener('click', duelRematch);
+$('duelExitBtn').addEventListener('click', exitDuel);
+$('opCode').addEventListener('input', () => {
+  $('opCode').value = $('opCode').value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+});
+['opName', 'opCode'].forEach((id) => $(id).addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') void duelGo();
+}));
+document.querySelectorAll('[data-duel-close]').forEach((button) => {
+  button.addEventListener('click', () => $('duelOverlay').classList.add('hidden'));
+});
+
+function openDuelPanel(intent) {
+  duelPanelIntent = intent;
+  $('duelOverlay').classList.add('hidden');
+  $('opTitle').textContent = intent === 'host' ? 'Start a challenge' : 'Join a challenge';
+  $('opGo').textContent = intent === 'host' ? 'Get a code' : 'Open the quiz';
+  $('opCodeWrap').classList.toggle('hidden', intent === 'host');
+  $('opError').classList.add('hidden');
+  $('opName').value = $('opName').value || duelGetName();
+  $('onlinePanel').classList.remove('hidden');
+  (intent === 'join' && $('opName').value ? $('opCode') : $('opName')).focus();
+}
+
+async function duelGo() {
+  if ($('opGo').disabled) return;
+  const name = $('opName').value.trim();
+  if (!name) {
+    $('opError').textContent = 'Every byline needs a name.';
+    $('opError').classList.remove('hidden');
+    $('opName').focus();
+    return;
+  }
+  if (questions.length === 0) {
+    $('opError').textContent = 'This week’s questions are not published yet.';
+    $('opError').classList.remove('hidden');
+    return;
+  }
+
+  $('opGo').disabled = true;
+  $('opError').classList.add('hidden');
+  try {
+    if (duelPanelIntent === 'host') {
+      const created = await Duel.create({
+        game: DUEL_GAME,
+        name,
+        payload: randomDuelPayload(),
+      });
+      $('onlinePanel').classList.add('hidden');
+      openDuelLobby(created);
+    } else {
+      const code = $('opCode').value.trim();
+      if (code.length !== 4) {
+        $('opError').textContent = 'The challenge code is 4 characters.';
+        $('opError').classList.remove('hidden');
+        $('opCode').focus();
+        return;
+      }
+      const joined = await Duel.join({ game: DUEL_GAME, code, name });
+      try {
+        questionsForDuel(questions, edition, joined.payload);
+      } catch (err) {
+        await joined.leave();
+        throw err;
+      }
+      location.href = duelUrl();
+    }
+  } catch (err) {
+    $('opError').textContent = duelFriendly(err);
+    $('opError').classList.remove('hidden');
+  } finally {
+    $('opGo').disabled = false;
+  }
+}
+
+function openDuelLobby(openDuel) {
+  if ($('lobby')._duel && $('lobby')._duel !== openDuel) $('lobby')._duel.stop();
+  $('lobby')._duel = openDuel;
+  $('lobbyCode').textContent = openDuel.code;
+  $('lobbyStatus').textContent =
+    'They tap ⚔️, choose Join, and enter it. The current quiz opens for both of you.';
+  $('lobby').classList.remove('hidden');
+  openDuel.start({
+    onChange: () => {
+      if (openDuel.status !== 'waiting') location.href = duelUrl();
+    },
+    onError: (err) => {
+      $('lobbyStatus').textContent = `${duelFriendly(err)} You can call it off below.`;
+    },
+  });
+}
+
+function cancelDuelLobby() {
+  const openDuel = $('lobby')._duel;
+  if (openDuel) void openDuel.leave();
+  $('lobby')._duel = null;
+  $('lobby').classList.add('hidden');
+}
+
+function refreshDuelRejoin() {
+  const saved = duelSavedSession(DUEL_GAME);
+  const button = $('rejoinBtn');
+  button.classList.toggle('hidden', !saved || duelActive());
+  if (saved) button.textContent = `↩ Rejoin challenge ${saved.code}`;
+}
+
+async function rejoinDuel() {
+  $('rejoinBtn').disabled = true;
+  $('duelMenuError').classList.add('hidden');
+  try {
+    const resumed = await Duel.resume({ game: DUEL_GAME });
+    try {
+      questionsForDuel(questions, edition, resumed.payload);
+    } catch (err) {
+      await resumed.leave();
+      throw err;
+    }
+    if (resumed.status === 'waiting') {
+      $('duelOverlay').classList.add('hidden');
+      openDuelLobby(resumed);
+    } else {
+      location.href = duelUrl();
+    }
+  } catch (err) {
+    if (err && ['not_found', 'not_seated', 'room_started'].includes(err.code)) {
+      duelClearSession(DUEL_GAME);
+      refreshDuelRejoin();
+    }
+    $('duelMenuError').textContent = duelFriendly(err);
+    $('duelMenuError').classList.remove('hidden');
+  } finally {
+    $('rejoinBtn').disabled = false;
+  }
+}
+
+async function exitDuel() {
+  if (duel && !preserveDuelSession) await duel.leave();
+  // A boot-time offline error leaves duel null; keep that saved session so
+  // the weekly screen can still offer Rejoin once the connection returns.
+  location.replace(location.pathname);
+}
+
+function pauseDuel() {
+  if (duel) duel.stop();
+  location.replace(location.pathname);
+}
+
+async function forfeitDuel() {
+  if (!duel || duelSubmitted) {
+    pauseDuel();
+    return;
+  }
+  clearInterval(timerInt);
+  finished = true;
+  const submitted = await duelSubmit(makeDuelForfeit(questions.length));
+  if (submitted) pauseDuel();
+}
+
+async function duelRematch() {
+  if (!duel) return;
+  $('duelRematchBtn').disabled = true;
+  try {
+    await duel.rematch(randomDuelPayload());
+    location.reload();
+  } catch (err) {
+    showDuelProblem(err);
+  }
+}
+
+refreshDuelRejoin();
