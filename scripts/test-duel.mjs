@@ -1,5 +1,5 @@
 // News Quiz duel wiring test: drives the real vendored duel client
-// (js/duel.js → js/rooms.js) against the local rooms shim as two phones.
+// (js/duel.js → js/rooms.js) against the local rooms shim as 2-4 phones.
 //
 //   node scripts/test-duel.mjs
 
@@ -103,17 +103,27 @@ t(
 );
 t(
   /function showDuelDone\(\) \{\s*if \(!duel \|\| !duel\.isComplete\(\)\) return;/.test(mainSource),
-  'rival correctness rows cannot render until both results are complete',
+  'rival correctness rows cannot render until every result is complete',
 );
 const requiredIds = [
   'duelBtn', 'hostBtn', 'joinBtn', 'rejoinBtn', 'onlinePanel', 'opTitle',
-  'opName', 'opCodeWrap', 'opCode', 'opError', 'opGo', 'opCancel', 'lobby',
-  'lobbyCode', 'lobbyCancel', 'duelBar', 'duelDone', 'duelDoneHead',
+  'opName', 'opSeatsWrap', 'opSeats', 'opCodeWrap', 'opCode', 'opError',
+  'opGo', 'opCancel', 'lobby', 'lobbyCode', 'lobbyList', 'inviteBtn',
+  'lobbyCancel', 'duelBar', 'duelDone', 'duelDoneHead',
   'duelDoneRows', 'duelRematchBtn', 'duelExitBtn',
 ];
 t(
   requiredIds.every((id) => htmlSource.includes(`id="${id}"`)),
   'fleet smoke-test element ids are all present',
+);
+t(
+  /Duel\.create\(\{[\s\S]*seats: duelSeats/.test(mainSource) &&
+    /openDuel\.match\.start\(\{[\s\S]*onPresence: updateLobby/.test(mainSource),
+  'host seat count and live lobby presence are wired into room creation',
+);
+t(
+  /get\('join'\)[\s\S]*history\.replaceState[\s\S]*openDuelPanel\('join'\)/.test(mainSource),
+  'race-link code prefills the join panel and is scrubbed from the URL',
 );
 
 device('A');
@@ -233,6 +243,68 @@ await expectCode(
   'opponent_left',
   'submission into an abandoned challenge explains the dead end',
 );
+
+/* --------------------------------------------- 3-racer heat (group duel) */
+
+const GROUP_PAYLOAD = { edition: editionData.edition, seed: 0x3ea72026 };
+device('A');
+const h3 = await Duel.create({
+  game: GAME, name: 'Ada', payload: GROUP_PAYLOAD, seats: 3,
+});
+t(h3.status === 'waiting' && h3.match.maxSeats === 3,
+  '3-seat heat opens with maxSeats tracked');
+device('B');
+const g3b = await Duel.join({ game: GAME, code: h3.code, name: 'Bea' });
+t(g3b.status === 'waiting' && g3b.match.seats.length === 2,
+  'second racer is seated and the heat keeps waiting');
+device('C');
+const g3c = await Duel.join({ game: GAME, code: h3.code, name: 'Cal' });
+t(g3c.status === 'playing' && g3c.match.maxSeats === 3,
+  'third racer fills the heat and starts the quiz');
+
+const groupAResult = makeDuelResult(
+  editionData.questions.map(() => ({ correct: true })),
+  59000,
+);
+const groupBResult = makeDuelResult(
+  editionData.questions.map((_, index) => ({ correct: index !== editionData.questions.length - 1 })),
+  41000,
+);
+const groupCResult = makeDuelResult(
+  editionData.questions.map((_, index) => ({ correct: index !== editionData.questions.length - 1 })),
+  50000,
+);
+
+device('A');
+await h3.match._fetch();
+const submitA = h3.submitResult(groupAResult);
+device('B');
+const submitB = g3b.submitResult(groupBResult);
+await Promise.all([submitA, submitB]);
+device('C');
+await g3c.match._fetch();
+t(!g3c.isComplete(), 'two of three scores filed — heat remains open');
+await g3c.submitResult(groupCResult);
+
+device('A');
+await h3.match._fetch();
+device('B');
+await g3b.match._fetch();
+t(h3.isComplete() && g3b.isComplete() && h3.status === 'over',
+  'all three scores merge and close the heat');
+const fullField = [
+  { name: 'Ada', result: h3.myResult() },
+  ...h3.others().map((racer) => ({ name: racer.name, result: racer.result })),
+];
+t(fullField.every((racer) => racer.result.answers.length === editionData.questions.length),
+  'every racer exposes per-question correctness for the completed results screen');
+const standings = fullField
+  .sort((first, second) => -compareDuelResults(first.result, second.result))
+  .map((racer) => racer.name);
+t(JSON.stringify(standings) === JSON.stringify(['Ada', 'Bea', 'Cal']),
+  '3-racer standings rank higher score first, then faster milliseconds');
+t(g3b.others().every((racer) => racer.result && racer.result.answers),
+  'the winner and every rival receive the full completed field');
 
 console.log(`\nALL DUEL TESTS PASSED (${passed} checks)`);
 process.exit(0);

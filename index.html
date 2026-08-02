@@ -93,12 +93,12 @@
     A <strong>Btown Games</strong> production · Read the <a href="https://www.btownbrief.com" target="_blank" rel="noopener">BTown Brief</a>
   </footer>
 
-  <!-- Duel: two phones, this week's questions, one seeded order -->
+  <!-- Duel: 2-4 phones, this week's questions, one seeded order -->
   <div class="overlay hidden" id="duelOverlay">
     <div class="modal">
       <button class="modal-close" data-duel-close aria-label="Close">&times;</button>
       <h2>⚔️ Challenge a friend</h2>
-      <p>Beat my score on this week's Brief: the same questions, in the same order, on two phones.</p>
+      <p>Race on this week's Brief: the same questions, in the same order, on every phone.</p>
       <button class="btn-primary modal-action" id="hostBtn">Start a challenge — get a code</button>
       <button class="btn-primary modal-action" id="joinBtn">Join with a friend's code</button>
       <button class="chip hidden" id="rejoinBtn"></button>
@@ -111,6 +111,14 @@
       <h2 id="opTitle">Start a challenge</h2>
       <label class="duel-label" for="opName">Your byline</label>
       <input class="duel-input" id="opName" maxlength="24" autocomplete="nickname" placeholder="News hound" />
+      <div id="opSeatsWrap">
+        <label class="duel-label">Racers in this heat</label>
+        <div id="opSeats" class="seat-btns" role="group" aria-label="Racers in this heat">
+          <button class="seat-btn selected" data-seats="2" aria-pressed="true">2</button>
+          <button class="seat-btn" data-seats="3" aria-pressed="false">3</button>
+          <button class="seat-btn" data-seats="4" aria-pressed="false">4</button>
+        </div>
+      </div>
       <div id="opCodeWrap" class="hidden">
         <label class="duel-label" for="opCode">Challenge code</label>
         <input class="duel-input duel-code" id="opCode" maxlength="4" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="ABCD" />
@@ -123,9 +131,11 @@
 
   <div class="overlay hidden" id="lobby" data-static>
     <div class="modal">
-      <h2>Send this code to your rival</h2>
+      <h2>Send this code to your rivals</h2>
       <div id="lobbyCode"></div>
-      <p id="lobbyStatus">They tap ⚔️, choose <strong>Join</strong>, and enter it. The current quiz opens for both of you.</p>
+      <div id="lobbyList"></div>
+      <button class="btn-primary modal-action" id="inviteBtn">📲 Send an invite</button>
+      <p id="lobbyStatus">They tap ⚔️, choose <strong>Join</strong>, and enter it. When the last chair fills, the current quiz opens for everyone.</p>
       <button class="chip" id="lobbyCancel">Call it off</button>
     </div>
   </div>
