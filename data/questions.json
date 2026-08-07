@@ -1,58 +1,58 @@
 {
-  "edition": "2026-08-03",
+  "edition": "2026-08-07",
   "questions": [
     {
       "id": 1,
-      "q": "What score did Vermont Green FC beat the Flint City Bucks by to win their second straight USL League Two national championship?",
+      "q": "What anniversary is Church Street Marketplace celebrating with this year's Sidewalk Sale?",
       "options": [
-        "1-0",
-        "2-1",
-        "3-2",
-        "4-1"
+        "25th",
+        "35th",
+        "46th",
+        "50th"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 2,
+      "q": "Where does artist Paige Hurley post her weekly sketches of Burlington kindness?",
+      "options": [
+        "The bulletin board at Speeder & Earl's on Pine Street",
+        "The window of Phoenix Books",
+        "City Hall Park's info kiosk",
+        "The BCA Center lobby"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 3,
+      "q": "What motto did Vermont pick for its first dedicated tourism brand?",
+      "options": [
+        "Green Mountain State",
+        "State of Inspiration",
+        "Unspoiled Vermont",
+        "Naturally Vermont"
       ],
       "answer": 1
     },
     {
-      "id": 2,
-      "q": "About how many parking spots did the Main Street redesign remove in downtown Burlington?",
-      "options": [
-        "25",
-        "42",
-        "67",
-        "110"
-      ],
-      "answer": 2
-    },
-    {
-      "id": 3,
-      "q": "What does a gram of cannabis average in Vermont, compared to $3.87 in Massachusetts?",
-      "options": [
-        "$5.12",
-        "$7.25",
-        "$9.59",
-        "$12.40"
-      ],
-      "answer": 2
-    },
-    {
       "id": 4,
-      "q": "How many people a week does Feeding Champlain Valley's Old North End food shelf now serve?",
+      "q": "Who put new rental e-bike fleets on Burlington's streets?",
       "options": [
-        "About 150",
-        "About 300",
-        "About 500",
-        "About 900"
+        "The city of Burlington",
+        "Burlington Segway owner Rick Sharp",
+        "A UVM student startup",
+        "Local Motion"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 5,
-      "q": "Where is Vermont's first diverging diamond interchange nearing completion?",
+      "q": "What national competition did South Burlington's Momin Waqar become Vermont's first-ever representative at?",
       "options": [
-        "Exit 14 in South Burlington",
-        "Exit 16 in Colchester",
-        "Exit 12 in Essex",
-        "Exit 17 in Milton"
+        "Intel Science Fair",
+        "ACT-SO",
+        "Siemens Competition",
+        "Regeneron STS"
       ],
       "answer": 1
     }
