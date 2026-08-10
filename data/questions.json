@@ -1,58 +1,58 @@
 {
-  "edition": "2026-08-07",
+  "edition": "2026-08-10",
   "questions": [
     {
       "id": 1,
-      "q": "What anniversary is Church Street Marketplace celebrating with this year's Sidewalk Sale?",
+      "q": "Ray's Seafood in Essex Junction is closing after how many years in business?",
       "options": [
-        "25th",
-        "35th",
-        "46th",
-        "50th"
+        "52",
+        "60",
+        "74",
+        "88"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "Where does artist Paige Hurley post her weekly sketches of Burlington kindness?",
+      "q": "Chef Micah Tavelli is leaving Majestic to run a kitchen in which city?",
       "options": [
-        "The bulletin board at Speeder & Earl's on Pine Street",
-        "The window of Phoenix Books",
-        "City Hall Park's info kiosk",
-        "The BCA Center lobby"
+        "New York",
+        "Boston",
+        "Montreal",
+        "Portland"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 3,
+      "q": "The Vermont Ninja Warrior Training Center's new 7,200 square foot gym is in which town?",
+      "options": [
+        "Essex",
+        "Williston",
+        "Colchester",
+        "Winooski"
       ],
       "answer": 0
     },
     {
-      "id": 3,
-      "q": "What motto did Vermont pick for its first dedicated tourism brand?",
-      "options": [
-        "Green Mountain State",
-        "State of Inspiration",
-        "Unspoiled Vermont",
-        "Naturally Vermont"
-      ],
-      "answer": 1
-    },
-    {
       "id": 4,
-      "q": "Who put new rental e-bike fleets on Burlington's streets?",
+      "q": "What was the median sale price in the Burlington metro for the first half of 2026, per Redfin?",
       "options": [
-        "The city of Burlington",
-        "Burlington Segway owner Rick Sharp",
-        "A UVM student startup",
-        "Local Motion"
+        "$391,879",
+        "$425,500",
+        "$466,065",
+        "$512,300"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 5,
-      "q": "What national competition did South Burlington's Momin Waqar become Vermont's first-ever representative at?",
+      "q": "The DMV's enforcement division is being renamed what, just as Super Troopers 3 hits theaters?",
       "options": [
-        "Intel Science Fair",
-        "ACT-SO",
-        "Siemens Competition",
-        "Regeneron STS"
+        "Vermont State Patrol",
+        "Vermont Highway Patrol",
+        "Green Mountain Patrol",
+        "Vermont Road Guard"
       ],
       "answer": 1
     }
