@@ -1,58 +1,58 @@
 {
-  "edition": "2026-08-10",
+  "edition": "2026-08-14",
   "questions": [
     {
       "id": 1,
-      "q": "Ray's Seafood in Essex Junction is closing after how many years in business?",
+      "q": "Sarah George won her hotly contested primary to keep which office?",
       "options": [
-        "52",
-        "60",
-        "74",
-        "88"
+        "Burlington Mayor",
+        "Chittenden County Sheriff",
+        "Chittenden County State's Attorney",
+        "Attorney General"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "Chef Micah Tavelli is leaving Majestic to run a kitchen in which city?",
+      "q": "About what share of registered Vermont voters turned out for Tuesday's primary?",
       "options": [
-        "New York",
-        "Boston",
-        "Montreal",
-        "Portland"
+        "12 percent",
+        "22 percent",
+        "35 percent",
+        "48 percent"
       ],
       "answer": 1
     },
     {
       "id": 3,
-      "q": "The Vermont Ninja Warrior Training Center's new 7,200 square foot gym is in which town?",
+      "q": "Roughly how many cyclists joined Wednesday's memorial ride for 16 year old Shiloh Skalka?",
       "options": [
-        "Essex",
-        "Williston",
-        "Colchester",
-        "Winooski"
-      ],
-      "answer": 0
-    },
-    {
-      "id": 4,
-      "q": "What was the median sale price in the Burlington metro for the first half of 2026, per Redfin?",
-      "options": [
-        "$391,879",
-        "$425,500",
-        "$466,065",
-        "$512,300"
+        "50",
+        "150",
+        "500",
+        "2,000"
       ],
       "answer": 2
     },
     {
-      "id": 5,
-      "q": "The DMV's enforcement division is being renamed what, just as Super Troopers 3 hits theaters?",
+      "id": 4,
+      "q": "The federal government is suing Vermont over a law giving undocumented residents which benefit?",
       "options": [
-        "Vermont State Patrol",
-        "Vermont Highway Patrol",
-        "Green Mountain Patrol",
-        "Vermont Road Guard"
+        "Driver's licenses",
+        "In-state tuition rates",
+        "State health coverage",
+        "Property tax credits"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 5,
+      "q": "UVM Health Network told regulators it expects to lose more than how much next fiscal year?",
+      "options": [
+        "$1 million",
+        "$14 million",
+        "$140 million",
+        "$3 billion"
       ],
       "answer": 1
     }
