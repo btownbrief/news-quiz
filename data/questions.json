@@ -1,60 +1,60 @@
 {
-  "edition": "2026-08-14",
+  "edition": "2026-08-17",
   "questions": [
     {
       "id": 1,
-      "q": "Sarah George won her hotly contested primary to keep which office?",
+      "q": "How many students can the new Burlington High School building hold?",
       "options": [
-        "Burlington Mayor",
-        "Chittenden County Sheriff",
-        "Chittenden County State's Attorney",
-        "Attorney General"
+        "960",
+        "1,100",
+        "1,500",
+        "2,200"
       ],
-      "answer": 2
+      "answer": 1
     },
     {
       "id": 2,
-      "q": "About what share of registered Vermont voters turned out for Tuesday's primary?",
+      "q": "Winooski's Sneakers Bistro is opening an upstairs cocktail lounge later this month. What is it called?",
       "options": [
-        "12 percent",
-        "22 percent",
-        "35 percent",
-        "48 percent"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 3,
-      "q": "Roughly how many cyclists joined Wednesday's memorial ride for 16 year old Shiloh Skalka?",
-      "options": [
-        "50",
-        "150",
-        "500",
-        "2,000"
+        "The Night Owl",
+        "After Hours",
+        "Sneakeasy",
+        "The Fry Jack"
       ],
       "answer": 2
     },
     {
-      "id": 4,
-      "q": "The federal government is suing Vermont over a law giving undocumented residents which benefit?",
+      "id": 3,
+      "q": "The Champlain Valley Fair's art exhibition added new judging categories this year, including Just Desserts and which spooky one?",
       "options": [
-        "Driver's licenses",
-        "In-state tuition rates",
-        "State health coverage",
-        "Property tax credits"
+        "Haunted",
+        "Ghost Stories",
+        "Full Moon",
+        "Vermont After Dark"
       ],
-      "answer": 1
+      "answer": 0
+    },
+    {
+      "id": 4,
+      "q": "How old are the three brothers who run Black Ice Premium Ice Cream in Essex Junction?",
+      "options": [
+        "13 and 14",
+        "16 and 17",
+        "18 and 19",
+        "21 and 22"
+      ],
+      "answer": 0
     },
     {
       "id": 5,
-      "q": "UVM Health Network told regulators it expects to lose more than how much next fiscal year?",
+      "q": "The Bove family's shelved plan for the old Pearl Street restaurant would have replaced it with what?",
       "options": [
-        "$1 million",
-        "$14 million",
-        "$140 million",
-        "$3 billion"
+        "A parking garage",
+        "A boutique hotel",
+        "A six-story building with 25 housing units",
+        "A new Bove's location"
       ],
-      "answer": 1
+      "answer": 2
     }
   ]
 }
