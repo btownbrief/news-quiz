@@ -1,60 +1,60 @@
 {
-  "edition": "2026-08-17",
+  "edition": "2026-08-21",
   "questions": [
     {
       "id": 1,
-      "q": "How many students can the new Burlington High School building hold?",
+      "q": "How long did the Vermont State Police run their extra downtown Burlington patrols before pulling them Sunday?",
       "options": [
-        "960",
-        "1,100",
-        "1,500",
-        "2,200"
+        "One week",
+        "Three weeks",
+        "Six weeks",
+        "Three months"
       ],
       "answer": 1
     },
     {
       "id": 2,
-      "q": "Winooski's Sneakers Bistro is opening an upstairs cocktail lounge later this month. What is it called?",
+      "q": "Grace Potter's Grand Point North returns to the waterfront September 18 through 20 under what new model?",
       "options": [
-        "The Night Owl",
-        "After Hours",
-        "Sneakeasy",
-        "The Fry Jack"
+        "A free festival",
+        "A fully nonprofit festival",
+        "A members only festival",
+        "A two city festival"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 3,
+      "q": "South Burlington's proposed ordinance would ban motorized devices of at least how many watts from shared use paths?",
+      "options": [
+        "250 watts",
+        "500 watts",
+        "750 watts",
+        "1,000 watts"
       ],
       "answer": 2
     },
     {
-      "id": 3,
-      "q": "The Champlain Valley Fair's art exhibition added new judging categories this year, including Just Desserts and which spooky one?",
-      "options": [
-        "Haunted",
-        "Ghost Stories",
-        "Full Moon",
-        "Vermont After Dark"
-      ],
-      "answer": 0
-    },
-    {
       "id": 4,
-      "q": "How old are the three brothers who run Black Ice Premium Ice Cream in Essex Junction?",
+      "q": "Jay Peak's trail clearing herd of goats and sheep from Cloud Brook Farm goes by what name?",
       "options": [
-        "13 and 14",
-        "16 and 17",
-        "18 and 19",
-        "21 and 22"
+        "The Chew Crew",
+        "The Mow Team",
+        "The Grazers",
+        "The Goat Squad"
       ],
       "answer": 0
     },
     {
       "id": 5,
-      "q": "The Bove family's shelved plan for the old Pearl Street restaurant would have replaced it with what?",
+      "q": "Kwame sat down with Grammy nominated dance singer HAYLA at Ilesoniq for the BTown Arts Podcast. What is her brand new album called?",
       "options": [
-        "A parking garage",
-        "A boutique hotel",
-        "A six-story building with 25 housing units",
-        "A new Bove's location"
+        "DUSK",
+        "DARK",
+        "DAWN",
+        "DUST"
       ],
-      "answer": 2
+      "answer": 1
     }
   ]
 }
