@@ -1,60 +1,60 @@
 {
-  "edition": "2026-08-21",
+  "edition": "2026-08-24",
   "questions": [
     {
       "id": 1,
-      "q": "How long did the Vermont State Police run their extra downtown Burlington patrols before pulling them Sunday?",
+      "q": "Burlington's new high school building opened this week on the former New North End campus. Roughly how much did the rebuild cost?",
       "options": [
-        "One week",
-        "Three weeks",
-        "Six weeks",
-        "Three months"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 2,
-      "q": "Grace Potter's Grand Point North returns to the waterfront September 18 through 20 under what new model?",
-      "options": [
-        "A free festival",
-        "A fully nonprofit festival",
-        "A members only festival",
-        "A two city festival"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 3,
-      "q": "South Burlington's proposed ordinance would ban motorized devices of at least how many watts from shared use paths?",
-      "options": [
-        "250 watts",
-        "500 watts",
-        "750 watts",
-        "1,000 watts"
+        "$96 million",
+        "$140 million",
+        "$206 million",
+        "$310 million"
       ],
       "answer": 2
     },
     {
-      "id": 4,
-      "q": "Jay Peak's trail clearing herd of goats and sheep from Cloud Brook Farm goes by what name?",
+      "id": 2,
+      "q": "How fast do trains currently have to cross the century old East Alburgh Bridge, the crossing that just got $4 million in federal planning money?",
       "options": [
-        "The Chew Crew",
-        "The Mow Team",
-        "The Grazers",
-        "The Goat Squad"
+        "5 miles per hour",
+        "15 miles per hour",
+        "25 miles per hour",
+        "40 miles per hour"
       ],
       "answer": 0
     },
     {
-      "id": 5,
-      "q": "Kwame sat down with Grammy nominated dance singer HAYLA at Ilesoniq for the BTown Arts Podcast. What is her brand new album called?",
+      "id": 3,
+      "q": "South Burlington police just launched a bike patrol focused on City Center. What is the squad rolling out with?",
       "options": [
-        "DUSK",
-        "DARK",
-        "DAWN",
-        "DUST"
+        "Five e-bikes",
+        "Three mountain bikes and two e-bikes",
+        "Two motorcycles and three e-bikes",
+        "Four mountain bikes"
       ],
       "answer": 1
+    },
+    {
+      "id": 4,
+      "q": "Under Vermont's statewide school cellphone ban, advocacy group VT-IRL.org reserves an A grade for schools that do what?",
+      "options": [
+        "Use magnetic pouches",
+        "Let students keep phones in backpacks",
+        "Store phones centrally all day",
+        "Ban smartwatches too"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 5,
+      "q": "Esox, the Main Street dive bar closing over a rent dispute, poured drinks in Burlington for how many years?",
+      "options": [
+        "23 years",
+        "35 years",
+        "48 years",
+        "61 years"
+      ],
+      "answer": 2
     }
   ]
 }
