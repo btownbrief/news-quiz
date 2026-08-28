@@ -1,58 +1,58 @@
 {
-  "edition": "2026-08-24",
+  "edition": "2026-08-28",
   "questions": [
     {
       "id": 1,
-      "q": "Burlington's new high school building opened this week on the former New North End campus. Roughly how much did the rebuild cost?",
+      "q": "How much money did Vermont secure in its settlement with Meta?",
       "options": [
-        "$96 million",
-        "$140 million",
-        "$206 million",
-        "$310 million"
+        "$17 billion",
+        "$3.9 million",
+        "$92.7 million",
+        "$127,000"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "How fast do trains currently have to cross the century old East Alburgh Bridge, the crossing that just got $4 million in federal planning money?",
+      "q": "What did VTrans say is causing the rough right-lane pavement on I-89?",
       "options": [
-        "5 miles per hour",
-        "15 miles per hour",
-        "25 miles per hour",
-        "40 miles per hour"
-      ],
-      "answer": 0
-    },
-    {
-      "id": 3,
-      "q": "South Burlington police just launched a bike patrol focused on City Center. What is the squad rolling out with?",
-      "options": [
-        "Five e-bikes",
-        "Three mountain bikes and two e-bikes",
-        "Two motorcycles and three e-bikes",
-        "Four mountain bikes"
+        "Frost heaves",
+        "Raveling",
+        "Salt damage",
+        "Overweight permits"
       ],
       "answer": 1
     },
     {
-      "id": 4,
-      "q": "Under Vermont's statewide school cellphone ban, advocacy group VT-IRL.org reserves an A grade for schools that do what?",
+      "id": 3,
+      "q": "Who replaced Bret Michaels in the Champlain Valley Fair's September 6 grandstand show?",
       "options": [
-        "Use magnetic pouches",
-        "Let students keep phones in backpacks",
-        "Store phones centrally all day",
-        "Ban smartwatches too"
+        "John Waite",
+        "Rick Springfield",
+        "Eddie Money's band",
+        "Joan Jett"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 4,
+      "q": "What anniversary does Tropical Storm Irene mark this week?",
+      "options": [
+        "5 years",
+        "10 years",
+        "15 years",
+        "20 years"
       ],
       "answer": 2
     },
     {
       "id": 5,
-      "q": "Esox, the Main Street dive bar closing over a rent dispute, poured drinks in Burlington for how many years?",
+      "q": "What income cap will qualify Vermont families for free UVM tuition next year?",
       "options": [
-        "23 years",
-        "35 years",
-        "48 years",
-        "61 years"
+        "$75,000",
+        "$100,000",
+        "$125,000",
+        "$150,000"
       ],
       "answer": 2
     }
