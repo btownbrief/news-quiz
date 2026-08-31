@@ -1,60 +1,60 @@
 {
-  "edition": "2026-08-28",
+  "edition": "2026-08-31",
   "questions": [
     {
       "id": 1,
-      "q": "How much money did Vermont secure in its settlement with Meta?",
+      "q": "According to Vermont Public, what is Vermont's average household size, one of the smallest in the country?",
       "options": [
-        "$17 billion",
-        "$3.9 million",
-        "$92.7 million",
-        "$127,000"
+        "2.2 people",
+        "3.1 people",
+        "2.8 people",
+        "1.9 people"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "id": 2,
-      "q": "What did VTrans say is causing the rough right-lane pavement on I-89?",
+      "q": "How many Vermonters could lose Medicaid on January 1 when new work requirements take effect?",
       "options": [
-        "Frost heaves",
-        "Raveling",
-        "Salt damage",
-        "Overweight permits"
+        "Up to 49,000",
+        "Up to 9,000",
+        "Up to 120,000",
+        "Up to 300"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "id": 3,
-      "q": "Who replaced Bret Michaels in the Champlain Valley Fair's September 6 grandstand show?",
+      "q": "How long is the newly completed Burlington Wildways Trail?",
       "options": [
-        "John Waite",
-        "Rick Springfield",
-        "Eddie Money's band",
-        "Joan Jett"
+        "About 10 miles",
+        "About 3 miles",
+        "About 25 miles",
+        "About 6 miles"
       ],
       "answer": 0
     },
     {
       "id": 4,
-      "q": "What anniversary does Tropical Storm Irene mark this week?",
+      "q": "Which item can NO LONGER fail your Vermont vehicle inspection starting September 1?",
       "options": [
-        "5 years",
-        "10 years",
-        "15 years",
-        "20 years"
+        "Windshield cracks",
+        "Bald tires",
+        "Broken headlights",
+        "Worn brake pads"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "id": 5,
-      "q": "What income cap will qualify Vermont families for free UVM tuition next year?",
+      "q": "What is Burlington Parks and Recreation protecting with orange netting at North Beach?",
       "options": [
-        "$75,000",
-        "$100,000",
-        "$125,000",
-        "$150,000"
+        "Snapping turtle nests",
+        "Piping plover chicks",
+        "A bald eagle nest",
+        "Monarch butterfly habitat"
       ],
-      "answer": 2
+      "answer": 0
     }
   ]
 }
