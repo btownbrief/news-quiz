@@ -1,60 +1,60 @@
 {
-  "edition": "2026-08-31",
+  "edition": "2026-09-04",
   "questions": [
     {
       "id": 1,
-      "q": "According to Vermont Public, what is Vermont's average household size, one of the smallest in the country?",
+      "q": "What is Radio Bean's last official day of operation before it closes?",
       "options": [
-        "2.2 people",
-        "3.1 people",
-        "2.8 people",
-        "1.9 people"
+        "Friday, September 4",
+        "Wednesday, September 9",
+        "Monday, September 14",
+        "Wednesday, September 30"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": 2,
-      "q": "How many Vermonters could lose Medicaid on January 1 when new work requirements take effect?",
+      "q": "By how much did Jay Peak say its Canadian visitors dropped over the 2025-26 ski season?",
       "options": [
-        "Up to 49,000",
-        "Up to 9,000",
-        "Up to 120,000",
-        "Up to 300"
+        "5%",
+        "15%",
+        "35%",
+        "65%"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "id": 3,
-      "q": "How long is the newly completed Burlington Wildways Trail?",
+      "q": "Roughly how much does the Ben & Jerry's Foundation hand out in Vermont grants each year?",
       "options": [
-        "About 10 miles",
-        "About 3 miles",
-        "About 25 miles",
-        "About 6 miles"
+        "$60,000",
+        "$600,000",
+        "$6 million",
+        "$60 million"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": 4,
-      "q": "Which item can NO LONGER fail your Vermont vehicle inspection starting September 1?",
+      "q": "In which bay did boat captain Gary Lefebvre find thousands of tires on the bottom of Lake Champlain?",
       "options": [
-        "Windshield cracks",
-        "Bald tires",
-        "Broken headlights",
-        "Worn brake pads"
+        "Malletts Bay",
+        "Shelburne Bay",
+        "Cumberland Bay",
+        "Missisquoi Bay"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "id": 5,
-      "q": "What is Burlington Parks and Recreation protecting with orange netting at North Beach?",
+      "q": "What kind of interchange is opening at I-89's Exit 16 in Colchester by the end of September?",
       "options": [
-        "Snapping turtle nests",
-        "Piping plover chicks",
-        "A bald eagle nest",
-        "Monarch butterfly habitat"
+        "A roundabout",
+        "A diverging diamond",
+        "A cloverleaf",
+        "A flyover"
       ],
-      "answer": 0
+      "answer": 1
     }
   ]
 }
