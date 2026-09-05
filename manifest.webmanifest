@@ -1,0 +1,22 @@
+{
+  "name": "News Quiz",
+  "short_name": "News Quiz",
+  "description": "News Quiz. A Btown Games production.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#12233a",
+  "theme_color": "#12233a",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
