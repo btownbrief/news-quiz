@@ -1,58 +1,58 @@
 {
-  "edition": "2026-09-04",
+  "edition": "2026-09-07",
   "questions": [
     {
       "id": 1,
-      "q": "What is Radio Bean's last official day of operation before it closes?",
+      "q": "The Peace & Justice Center's scavenger hunt hides clusters of what across 24 Burlington parks?",
       "options": [
-        "Friday, September 4",
-        "Wednesday, September 9",
-        "Monday, September 14",
-        "Wednesday, September 30"
+        "Painted rocks",
+        "Metallic blue peace sign stickers",
+        "Wooden tokens",
+        "QR code tags"
       ],
       "answer": 1
     },
     {
       "id": 2,
-      "q": "By how much did Jay Peak say its Canadian visitors dropped over the 2025-26 ski season?",
+      "q": "The National Trust for Local News, the new owner of The Other Paper and the Shelburne News, is based in which state?",
       "options": [
-        "5%",
-        "15%",
-        "35%",
-        "65%"
+        "Maine",
+        "Georgia",
+        "Colorado",
+        "Vermont"
       ],
       "answer": 2
     },
     {
       "id": 3,
-      "q": "Roughly how much does the Ben & Jerry's Foundation hand out in Vermont grants each year?",
+      "q": "CVOEO withdrew its proposal for a 100 bed shelter at a former mattress store on which South Burlington road?",
       "options": [
-        "$60,000",
-        "$600,000",
-        "$6 million",
-        "$60 million"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 4,
-      "q": "In which bay did boat captain Gary Lefebvre find thousands of tires on the bottom of Lake Champlain?",
-      "options": [
-        "Malletts Bay",
-        "Shelburne Bay",
-        "Cumberland Bay",
-        "Missisquoi Bay"
+        "Shelburne Road",
+        "Dorset Street",
+        "Williston Road",
+        "Kennedy Drive"
       ],
       "answer": 2
     },
     {
-      "id": 5,
-      "q": "What kind of interchange is opening at I-89's Exit 16 in Colchester by the end of September?",
+      "id": 4,
+      "q": "What does Republican candidate Jace Laquerre say he will do if elected Chittenden County State's Attorney?",
       "options": [
-        "A roundabout",
-        "A diverging diamond",
-        "A cloverleaf",
-        "A flyover"
+        "Resign immediately",
+        "Move to Burlington",
+        "Hire Bram Kranichfeld",
+        "Serve one term only"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 5,
+      "q": "The Robert Miller Community and Recreation Center closes on what date for its net zero energy renovation?",
+      "options": [
+        "September 14",
+        "September 21",
+        "October 1",
+        "October 15"
       ],
       "answer": 1
     }
