@@ -1,60 +1,60 @@
 {
-  "edition": "2026-09-07",
+  "edition": "2026-09-11",
   "questions": [
     {
       "id": 1,
-      "q": "The Peace & Justice Center's scavenger hunt hides clusters of what across 24 Burlington parks?",
+      "q": "What did artist Martha Hull call the South End Art Hop in NBC5's preview of this year's event?",
       "options": [
-        "Painted rocks",
-        "Metallic blue peace sign stickers",
-        "Wooden tokens",
-        "QR code tags"
+        "Our Super Bowl",
+        "Our Woodstock",
+        "Our Olympics",
+        "Our Mardi Gras"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "id": 2,
-      "q": "The National Trust for Local News, the new owner of The Other Paper and the Shelburne News, is based in which state?",
+      "q": "Which Pine Street stretch closes to cars on Art Hop Friday night?",
       "options": [
-        "Maine",
-        "Georgia",
-        "Colorado",
-        "Vermont"
+        "Howard to Sears Lane",
+        "Lakeside to Flynn",
+        "Kilburn to Howard",
+        "Maple to King"
       ],
       "answer": 2
     },
     {
       "id": 3,
-      "q": "CVOEO withdrew its proposal for a 100 bed shelter at a former mattress store on which South Burlington road?",
+      "q": "Roughly how many Vermonters were homeless as of May, according to Seven Days?",
       "options": [
-        "Shelburne Road",
-        "Dorset Street",
-        "Williston Road",
-        "Kennedy Drive"
+        "About 2,500",
+        "More than 8,000",
+        "About 1,200",
+        "At least 4,000"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "id": 4,
-      "q": "What does Republican candidate Jace Laquerre say he will do if elected Chittenden County State's Attorney?",
+      "q": "What rate increase did regulators approve for Green Mountain Power, effective October 1?",
       "options": [
-        "Resign immediately",
-        "Move to Burlington",
-        "Hire Bram Kranichfeld",
-        "Serve one term only"
+        "7.5%",
+        "5.5%",
+        "3%",
+        "10%"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": 5,
-      "q": "The Robert Miller Community and Recreation Center closes on what date for its net zero energy renovation?",
+      "q": "What product is in short supply after Border Patrol detained workers at Kingdom Creamery of Vermont?",
       "options": [
-        "September 14",
-        "September 21",
-        "October 1",
-        "October 15"
+        "Creemee mix",
+        "Maple cream",
+        "Cheddar curds",
+        "Butter"
       ],
-      "answer": 1
+      "answer": 0
     }
   ]
 }
