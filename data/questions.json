@@ -1,60 +1,60 @@
 {
-  "edition": "2026-09-11",
+  "edition": "2026-09-21",
   "questions": [
     {
       "id": 1,
-      "q": "What did artist Martha Hull call the South End Art Hop in NBC5's preview of this year's event?",
+      "q": "Out of Burlington's 11 Vermont House seats, at least how many will likely have a new representative in January?",
       "options": [
-        "Our Super Bowl",
-        "Our Woodstock",
-        "Our Olympics",
-        "Our Mardi Gras"
+        "2",
+        "4",
+        "6",
+        "9"
       ],
-      "answer": 0
+      "answer": 2
     },
     {
       "id": 2,
-      "q": "Which Pine Street stretch closes to cars on Art Hop Friday night?",
+      "q": "Of the 207 cases Vermont Legal Aid's tenant pilot resolved through August, in how many did attorneys prevent eviction?",
       "options": [
-        "Howard to Sears Lane",
-        "Lakeside to Flynn",
-        "Kilburn to Howard",
-        "Maple to King"
+        "12",
+        "41",
+        "73",
+        "150"
       ],
       "answer": 2
     },
     {
       "id": 3,
-      "q": "Roughly how many Vermonters were homeless as of May, according to Seven Days?",
+      "q": "What did Zachary's Pizza in South Burlington open in the space left by its family fun center?",
       "options": [
-        "About 2,500",
-        "More than 8,000",
-        "About 1,200",
-        "At least 4,000"
+        "A taproom",
+        "A bakery",
+        "A music venue",
+        "A second dining room"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "id": 4,
-      "q": "What rate increase did regulators approve for Green Mountain Power, effective October 1?",
+      "q": "How many students does the Champlain Valley School District enroll this year, still the most in Vermont?",
       "options": [
-        "7.5%",
-        "5.5%",
-        "3%",
-        "10%"
+        "1,177",
+        "2,450",
+        "3,601",
+        "5,200"
       ],
-      "answer": 1
+      "answer": 2
     },
     {
       "id": 5,
-      "q": "What product is in short supply after Border Patrol detained workers at Kingdom Creamery of Vermont?",
+      "q": "Compared with when the state's sugar maple monitoring began in 1991, how much longer did last year's growing season run?",
       "options": [
-        "Creemee mix",
-        "Maple cream",
-        "Cheddar curds",
-        "Butter"
+        "3 days",
+        "10 days",
+        "21 days",
+        "45 days"
       ],
-      "answer": 0
+      "answer": 2
     }
   ]
 }
