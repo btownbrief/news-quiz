@@ -1,58 +1,58 @@
 {
-  "edition": "2026-09-25",
+  "edition": "2026-10-02",
   "questions": [
     {
       "id": 1,
-      "q": "How long is the historic Burlington-Winooski bridge VTrans listed for free on Craigslist?",
+      "q": "Bowl & Roll opened on St. Paul Street in the former space of which restaurant?",
       "options": [
-        "128 feet",
-        "259 feet",
-        "359 feet",
-        "1,928 feet"
+        "Magic Chopsticks",
+        "Namaste Indian-Nepali Kitchen",
+        "Haymaker Bun",
+        "Halvorson's"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "id": 2,
-      "q": "What are Vermont scientists attaching to monarch butterflies to track their migration?",
+      "q": "How much did Winooski's Main Street revitalization project cost?",
       "options": [
-        "Tiny paint dots",
-        "Solar powered transmitter backpacks",
-        "Paper ID tags",
-        "GPS collars"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 3,
-      "q": "How many bargaining sessions had the UVMMC union held with hospital leadership before the strike vote?",
-      "options": [
-        "6",
-        "12",
-        "18",
-        "30"
+        "$8.3 million",
+        "$18.3 million",
+        "$28.3 million",
+        "$48.3 million"
       ],
       "answer": 2
     },
     {
-      "id": 4,
-      "q": "About how many new homes per year does Burlington need to hit its 2050 housing target?",
+      "id": 3,
+      "q": "UVM's record $38 million federal award will fund an AI \"twin\" of what?",
       "options": [
-        "145",
-        "280",
-        "1,100",
-        "7,000"
+        "Lake Champlain",
+        "A critically ill patient",
+        "Burlington's power grid",
+        "A dairy cow"
       ],
       "answer": 1
     },
     {
-      "id": 5,
-      "q": "What did the UNH poll show in the governor's race?",
+      "id": 4,
+      "q": "Gov. Scott told President Trump that Vermont has the capacity to welcome up to how many refugees next year?",
       "options": [
-        "Scott 49%, Janoo 43%",
-        "Janoo 49%, Scott 43%",
-        "A tie at 46%",
-        "Scott 54%, Janoo 40%"
+        "125",
+        "200",
+        "300",
+        "500"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 5,
+      "q": "Starting in fall 2027, Champlain College will match first year tuition and fees for Vermont students to what?",
+      "options": [
+        "Community College of Vermont's rate",
+        "UVM's in state rate",
+        "Middlebury's rate",
+        "A flat $10,000"
       ],
       "answer": 1
     }
