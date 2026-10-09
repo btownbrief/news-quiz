@@ -1,60 +1,60 @@
 {
-  "edition": "2026-10-05",
+  "edition": "2026-10-09",
   "questions": [
     {
       "id": 1,
-      "q": "How much did the Winooski Valley Park District pay for the Charlie's Boathouse property?",
+      "q": "Gov. Scott suggested moving the money set aside for Burlington's overdose prevention center toward what?",
       "options": [
-        "$450,000",
-        "$960,000",
-        "$1.5 million",
-        "$2.5 million"
+        "A new police substation",
+        "The proposed 100 bed emergency shelter",
+        "Housing vouchers",
+        "A new detox facility"
       ],
       "answer": 1
     },
     {
       "id": 2,
-      "q": "Which item from Nectar's is part of Big Heavy World's music collection, now headed to the Vermont Historical Society?",
+      "q": "What were the Williston officers dealing with when a man drove up and one of them shot him?",
       "options": [
-        "The neon sign",
-        "A bar stool",
-        "The ladle",
-        "The cash register"
+        "A traffic stop",
+        "A bank alarm",
+        "A noise complaint",
+        "Downed wires across Route 2A"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "id": 3,
-      "q": "How many apartments is the old downtown Burlington YMCA becoming?",
+      "q": "At the Birds of Vermont Museum's Big Sit!, how big is the circle birders count from?",
       "options": [
-        "49",
-        "79",
-        "120",
-        "150"
+        "10 feet",
+        "17 feet",
+        "25 feet",
+        "50 feet"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "How many days does the median Vermont home now spend on the market?",
+      "q": "According to Seven Days, how long did a Valcour Island soldier's teeth sit on a shelf?",
       "options": [
-        "6",
-        "10",
-        "17",
-        "30"
+        "50 years",
+        "100 years",
+        "120 years",
+        "159 years"
       ],
-      "answer": 2
+      "answer": 3
     },
     {
       "id": 5,
-      "q": "Which city are the Vermont Coyotes basketball team leaving after this coming season?",
+      "q": "About how much has heating oil gone up per gallon since this time last year?",
       "options": [
-        "Burlington",
-        "Montpelier",
-        "Rutland",
-        "Barre"
+        "$2",
+        "50 cents",
+        "$1",
+        "$3"
       ],
-      "answer": 3
+      "answer": 0
     }
   ]
 }
