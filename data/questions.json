@@ -1,58 +1,58 @@
 {
-  "edition": "2026-10-09",
+  "edition": "2026-10-12",
   "questions": [
     {
       "id": 1,
-      "q": "Gov. Scott suggested moving the money set aside for Burlington's overdose prevention center toward what?",
+      "q": "What will Sugar House Hotel guests get when they arrive?",
       "options": [
-        "A new police substation",
-        "The proposed 100 bed emergency shelter",
-        "Housing vouchers",
-        "A new detox facility"
+        "A maple creemee",
+        "A bottle of cider",
+        "A box of cider donuts",
+        "A jar of maple syrup"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "id": 2,
-      "q": "What were the Williston officers dealing with when a man drove up and one of them shot him?",
+      "q": "How many permanently affordable homes are planned at the Shale Beach Condominiums in Cambrian Rise?",
       "options": [
-        "A traffic stop",
-        "A bank alarm",
-        "A noise complaint",
-        "Downed wires across Route 2A"
+        "12",
+        "20",
+        "30",
+        "100"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 3,
+      "q": "Amanda Janoo has proposed an 8% income surcharge on personal income over what amount?",
+      "options": [
+        "$100,000",
+        "$250,000",
+        "$1 million",
+        "$500,000"
       ],
       "answer": 3
     },
     {
-      "id": 3,
-      "q": "At the Birds of Vermont Museum's Big Sit!, how big is the circle birders count from?",
+      "id": 4,
+      "q": "By what date should Vermont voters mail back their general election ballots?",
       "options": [
-        "10 feet",
-        "17 feet",
-        "25 feet",
-        "50 feet"
+        "Oct. 15",
+        "Oct. 20",
+        "Oct. 31",
+        "Nov. 3"
       ],
       "answer": 1
     },
     {
-      "id": 4,
-      "q": "According to Seven Days, how long did a Valcour Island soldier's teeth sit on a shelf?",
-      "options": [
-        "50 years",
-        "100 years",
-        "120 years",
-        "159 years"
-      ],
-      "answer": 3
-    },
-    {
       "id": 5,
-      "q": "About how much has heating oil gone up per gallon since this time last year?",
+      "q": "Which of these did Sen. Bernie Sanders cite when endorsing Amanda Janoo for governor?",
       "options": [
-        "$2",
-        "50 cents",
-        "$1",
-        "$3"
+        "A statewide moratorium on AI data centers",
+        "Free college tuition",
+        "A new state income tax cut",
+        "Building a new Burlington high school"
       ],
       "answer": 0
     }
