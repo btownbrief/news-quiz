@@ -1,60 +1,60 @@
 {
-  "edition": "2026-10-12",
+  "edition": "2026-10-16",
   "questions": [
     {
       "id": 1,
-      "q": "What will Sugar House Hotel guests get when they arrive?",
+      "q": "About how many bars and clubs has Shawn Cliche, who wants to bring Nectar's back, opened over the years?",
       "options": [
-        "A maple creemee",
-        "A bottle of cider",
-        "A box of cider donuts",
-        "A jar of maple syrup"
-      ],
-      "answer": 0
-    },
-    {
-      "id": 2,
-      "q": "How many permanently affordable homes are planned at the Shale Beach Condominiums in Cambrian Rise?",
-      "options": [
-        "12",
-        "20",
+        "10",
         "30",
+        "50",
         "100"
-      ],
-      "answer": 2
-    },
-    {
-      "id": 3,
-      "q": "Amanda Janoo has proposed an 8% income surcharge on personal income over what amount?",
-      "options": [
-        "$100,000",
-        "$250,000",
-        "$1 million",
-        "$500,000"
-      ],
-      "answer": 3
-    },
-    {
-      "id": 4,
-      "q": "By what date should Vermont voters mail back their general election ballots?",
-      "options": [
-        "Oct. 15",
-        "Oct. 20",
-        "Oct. 31",
-        "Nov. 3"
       ],
       "answer": 1
     },
     {
-      "id": 5,
-      "q": "Which of these did Sen. Bernie Sanders cite when endorsing Amanda Janoo for governor?",
+      "id": 2,
+      "q": "What does Yên, the name of Summer Cao's new Winooski restaurant, mean?",
       "options": [
-        "A statewide moratorium on AI data centers",
-        "Free college tuition",
-        "A new state income tax cut",
-        "Building a new Burlington high school"
+        "The sense of peace and comfort you feel inside",
+        "Golden river",
+        "Morning coffee",
+        "Family table"
       ],
       "answer": 0
+    },
+    {
+      "id": 3,
+      "q": "Where has Kismayo Kitchen reopened in Burlington?",
+      "options": [
+        "Church Street",
+        "North Winooski Avenue",
+        "505 Riverside Avenue",
+        "Pine Street"
+      ],
+      "answer": 2
+    },
+    {
+      "id": 4,
+      "q": "What is the name of the new play café opening Monday on Shelburne Road?",
+      "options": [
+        "Natural Nest Play Café",
+        "Little Acorn Play Café",
+        "The Play Nook",
+        "Wonder Den"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 5,
+      "q": "When does Vermont's new life jacket requirement for boaters apply each year?",
+      "options": [
+        "Oct. 1 through April 1",
+        "Dec. 1 through March 1",
+        "Year round",
+        "Nov. 1 through May 1"
+      ],
+      "answer": 3
     }
   ]
 }
