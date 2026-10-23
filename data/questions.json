@@ -1,60 +1,60 @@
 {
-  "edition": "2026-10-16",
+  "edition": "2026-10-23",
   "questions": [
     {
       "id": 1,
-      "q": "About how many bars and clubs has Shawn Cliche, who wants to bring Nectar's back, opened over the years?",
+      "q": "Where is the new Night Watch light art festival happening on Saturday night?",
       "options": [
-        "10",
-        "30",
-        "50",
-        "100"
-      ],
-      "answer": 1
-    },
-    {
-      "id": 2,
-      "q": "What does Yên, the name of Summer Cao's new Winooski restaurant, mean?",
-      "options": [
-        "The sense of peace and comfort you feel inside",
-        "Golden river",
-        "Morning coffee",
-        "Family table"
+        "Lake Street",
+        "Church Street",
+        "Battery Park",
+        "North Beach"
       ],
       "answer": 0
     },
     {
-      "id": 3,
-      "q": "Where has Kismayo Kitchen reopened in Burlington?",
+      "id": 2,
+      "q": "About how much has Beta Technologies spent on properties around its airport base over the past year?",
       "options": [
-        "Church Street",
-        "North Winooski Avenue",
-        "505 Riverside Avenue",
-        "Pine Street"
+        "$2.2 million",
+        "$8 million",
+        "$22.6 million",
+        "$100 million"
       ],
       "answer": 2
     },
     {
-      "id": 4,
-      "q": "What is the name of the new play café opening Monday on Shelburne Road?",
+      "id": 3,
+      "q": "How many people is Colchester's Vermont Information Processing laying off?",
       "options": [
-        "Natural Nest Play Café",
-        "Little Acorn Play Café",
-        "The Play Nook",
-        "Wonder Den"
+        "6",
+        "66",
+        "166",
+        "600"
       ],
-      "answer": 0
+      "answer": 1
+    },
+    {
+      "id": 4,
+      "q": "By about how much has Vermont's average monthly residential electric bill risen since 2019?",
+      "options": [
+        "9%",
+        "25%",
+        "39%",
+        "55%"
+      ],
+      "answer": 2
     },
     {
       "id": 5,
-      "q": "When does Vermont's new life jacket requirement for boaters apply each year?",
+      "q": "What does \"Jambo,\" the name of South Burlington's new stainless steel sculpture, mean in Swahili?",
       "options": [
-        "Oct. 1 through April 1",
-        "Dec. 1 through March 1",
-        "Year round",
-        "Nov. 1 through May 1"
+        "Welcome",
+        "Hello",
+        "Friend",
+        "Dance"
       ],
-      "answer": 3
+      "answer": 1
     }
   ]
 }
