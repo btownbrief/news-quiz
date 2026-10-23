@@ -2,7 +2,8 @@
 // data/questions.json for the static News Quiz.
 //
 // CSV columns: Question, Option_A, Option_B, Option_C, Option_D, Correct_Answer
-// Correct_Answer is a letter A–D. Usage:
+// Correct_Answer is a letter A–D, or the column's name ("Option A" or
+// "Option_A"), since the sheet has used both. Usage:
 //   node scripts/convert-csv.mjs "/path/to/export.csv"
 import fs from 'node:fs';
 
@@ -44,7 +45,8 @@ const letterIndex = { A: 0, B: 1, C: 2, D: 3 };
 const questions = rows.map((r, i) => {
   const [q, a, b, c, d, correct] = r.map((x) => x.trim());
   const options = [a, b, c, d];
-  const answer = letterIndex[correct.toUpperCase()];
+  const letter = correct.toUpperCase().replace(/^OPTION[\s_]*/, '');
+  const answer = letterIndex[letter];
   if (answer === undefined) throw new Error(`Row ${i + 1}: bad Correct_Answer "${correct}"`);
   return { id: i + 1, q, options, answer };
 });
