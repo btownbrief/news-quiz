@@ -1,60 +1,60 @@
 {
-  "edition": "2026-10-23",
+  "edition": "2026-10-26",
   "questions": [
     {
       "id": 1,
-      "q": "Where is the new Night Watch light art festival happening on Saturday night?",
+      "q": "How many bat species call Vermont home?",
       "options": [
-        "Lake Street",
-        "Church Street",
-        "Battery Park",
-        "North Beach"
-      ],
-      "answer": 0
-    },
-    {
-      "id": 2,
-      "q": "About how much has Beta Technologies spent on properties around its airport base over the past year?",
-      "options": [
-        "$2.2 million",
-        "$8 million",
-        "$22.6 million",
-        "$100 million"
+        "Five",
+        "Seven",
+        "Nine",
+        "Twelve"
       ],
       "answer": 2
     },
     {
-      "id": 3,
-      "q": "How many people is Colchester's Vermont Information Processing laying off?",
+      "id": 2,
+      "q": "On average, how much warmer is the surface of Lake Champlain than in the 1960s?",
       "options": [
-        "6",
-        "66",
-        "166",
-        "600"
+        "2 degrees",
+        "4 degrees",
+        "5 degrees",
+        "7 degrees"
+      ],
+      "answer": 3
+    },
+    {
+      "id": 3,
+      "q": "The Fair Share campaign wants to raise taxes on households making how much or more?",
+      "options": [
+        "$150,000",
+        "$250,000",
+        "$400,000",
+        "$1 million"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "By about how much has Vermont's average monthly residential electric bill risen since 2019?",
+      "q": "Essex Experience has been listed for sale at what price?",
       "options": [
-        "9%",
-        "25%",
-        "39%",
-        "55%"
+        "$27.75 million",
+        "$12 million",
+        "$19.5 million",
+        "$41 million"
       ],
-      "answer": 2
+      "answer": 0
     },
     {
       "id": 5,
-      "q": "What does \"Jambo,\" the name of South Burlington's new stainless steel sculpture, mean in Swahili?",
+      "q": "An AI parody ad cast Rep. Becca Balint as which movie villain?",
       "options": [
-        "Welcome",
-        "Hello",
-        "Friend",
-        "Dance"
+        "Lex Luthor",
+        "The Joker",
+        "Darth Vader",
+        "Dr. Evil"
       ],
-      "answer": 1
+      "answer": 3
     }
   ]
 }
