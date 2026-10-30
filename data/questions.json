@@ -1,60 +1,60 @@
 {
-  "edition": "2026-10-26",
+  "edition": "2026-10-30",
   "questions": [
     {
       "id": 1,
-      "q": "How many bat species call Vermont home?",
+      "q": "Who bought Charlie's Boathouse from the family, with plans to turn it into a public park?",
       "options": [
-        "Five",
-        "Seven",
-        "Nine",
-        "Twelve"
+        "The City of Burlington",
+        "Lake Champlain Land Trust",
+        "Winooski Valley Park District",
+        "Vermont Housing Conservation Board"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "On average, how much warmer is the surface of Lake Champlain than in the 1960s?",
+      "q": "What is on display at UVM's reopened Perkins Museum of Geology as Vermont's official state fossil?",
       "options": [
-        "2 degrees",
-        "4 degrees",
-        "5 degrees",
-        "7 degrees"
+        "The Charlotte Whale",
+        "The Champlain Mammoth",
+        "The Isle La Motte Coral",
+        "The Lake Monster"
       ],
-      "answer": 3
+      "answer": 0
     },
     {
       "id": 3,
-      "q": "The Fair Share campaign wants to raise taxes on households making how much or more?",
+      "q": "What is the name of Amanda Janoo's proposal to tax income over $250,000?",
       "options": [
-        "$150,000",
-        "$250,000",
-        "$400,000",
-        "$1 million"
+        "Green Mountain Plan",
+        "Fair Share",
+        "Vermont First",
+        "Opportunity Tax"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "Essex Experience has been listed for sale at what price?",
+      "q": "What is the Burlington City Council's ad hoc committee trying to reach a compromise on?",
       "options": [
-        "$27.75 million",
-        "$12 million",
-        "$19.5 million",
-        "$41 million"
+        "Burlington Forward",
+        "The planBTV neighborhood plan",
+        "The city budget",
+        "The police chief appointment"
       ],
       "answer": 0
     },
     {
       "id": 5,
-      "q": "An AI parody ad cast Rep. Becca Balint as which movie villain?",
+      "q": "On what date will First Unitarian Universalist celebrate its restored clock tower?",
       "options": [
-        "Lex Luthor",
-        "The Joker",
-        "Darth Vader",
-        "Dr. Evil"
+        "Nov. 1",
+        "Nov. 8",
+        "Nov. 15",
+        "Nov. 22"
       ],
-      "answer": 3
+      "answer": 2
     }
   ]
 }
