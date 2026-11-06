@@ -1,58 +1,58 @@
 {
-  "edition": "2026-10-30",
+  "edition": "2026-11-06",
   "questions": [
     {
       "id": 1,
-      "q": "Who bought Charlie's Boathouse from the family, with plans to turn it into a public park?",
+      "q": "Where did Finn Hamilton spot the city email address that led him to the Essex Junction City Planning Commission?",
       "options": [
-        "The City of Burlington",
-        "Lake Champlain Land Trust",
-        "Winooski Valley Park District",
-        "Vermont Housing Conservation Board"
+        "A school flyer",
+        "Front Porch Forum",
+        "His parents' water bill",
+        "A city newsletter"
       ],
       "answer": 2
     },
     {
       "id": 2,
-      "q": "What is on display at UVM's reopened Perkins Museum of Geology as Vermont's official state fossil?",
+      "q": "Who bought the B.U. Pub on Porters Point Road in Colchester?",
       "options": [
-        "The Charlotte Whale",
-        "The Champlain Mammoth",
-        "The Isle La Motte Coral",
-        "The Lake Monster"
+        "Debra LeBlanc",
+        "The Oliveira family",
+        "Kayla Silver",
+        "The Lampman family"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": 3,
-      "q": "What is the name of Amanda Janoo's proposal to tax income over $250,000?",
+      "q": "What will Glazed Donuts open in the Essex Experience space Leo & Co. is leaving?",
       "options": [
-        "Green Mountain Plan",
-        "Fair Share",
-        "Vermont First",
-        "Opportunity Tax"
+        "Salt & Bubbles",
+        "Glazed Café",
+        "So Many Moons",
+        "Uncommon Coffee"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "What is the Burlington City Council's ad hoc committee trying to reach a compromise on?",
+      "q": "What does Prop 3 enshrine in the Vermont Constitution?",
       "options": [
-        "Burlington Forward",
-        "The planBTV neighborhood plan",
-        "The city budget",
-        "The police chief appointment"
+        "Equal protection",
+        "The right to collective bargaining",
+        "A right to housing",
+        "Universal primary care"
       ],
-      "answer": 0
+      "answer": 1
     },
     {
       "id": 5,
-      "q": "On what date will First Unitarian Universalist celebrate its restored clock tower?",
+      "q": "What kind of tree is the Church Street Marketplace still searching for?",
       "options": [
-        "Nov. 1",
-        "Nov. 8",
-        "Nov. 15",
-        "Nov. 22"
+        "Balsam fir",
+        "White pine",
+        "Blue spruce",
+        "Norway spruce"
       ],
       "answer": 2
     }
