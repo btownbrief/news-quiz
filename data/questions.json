@@ -1,58 +1,58 @@
 {
-  "edition": "2026-11-06",
+  "edition": "2026-11-09",
   "questions": [
     {
       "id": 1,
-      "q": "Where did Finn Hamilton spot the city email address that led him to the Essex Junction City Planning Commission?",
+      "q": "Besides coffee, what can you find inside Artemus Café on Church Street?",
       "options": [
-        "A school flyer",
-        "Front Porch Forum",
-        "His parents' water bill",
-        "A city newsletter"
+        "The Burlington Art Mini Museum",
+        "A vinyl record shop",
+        "A board game library",
+        "A plant shop"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 2,
+      "q": "How many full scale \"ThunderDome\" flight simulators are in Beta's plans for its new training center?",
+      "options": [
+        "Two",
+        "Four",
+        "Six",
+        "Ten"
       ],
       "answer": 2
     },
     {
-      "id": 2,
-      "q": "Who bought the B.U. Pub on Porters Point Road in Colchester?",
-      "options": [
-        "Debra LeBlanc",
-        "The Oliveira family",
-        "Kayla Silver",
-        "The Lampman family"
-      ],
-      "answer": 1
-    },
-    {
       "id": 3,
-      "q": "What will Glazed Donuts open in the Essex Experience space Leo & Co. is leaving?",
+      "q": "Before Burlington, Anthony Geraci served as police chief in Watervliet and which other New York city?",
       "options": [
-        "Salt & Bubbles",
-        "Glazed Café",
-        "So Many Moons",
-        "Uncommon Coffee"
+        "Albany",
+        "Newburgh",
+        "Schenectady",
+        "Poughkeepsie"
       ],
       "answer": 1
     },
     {
       "id": 4,
-      "q": "What does Prop 3 enshrine in the Vermont Constitution?",
+      "q": "Which company made Green Mountain Transit's two idle electric buses?",
       "options": [
-        "Equal protection",
-        "The right to collective bargaining",
-        "A right to housing",
-        "Universal primary care"
+        "Proterra",
+        "Gillig",
+        "New Flyer",
+        "BYD"
       ],
-      "answer": 1
+      "answer": 0
     },
     {
       "id": 5,
-      "q": "What kind of tree is the Church Street Marketplace still searching for?",
+      "q": "What is Vermont's share of the nationwide General Motors data privacy settlement?",
       "options": [
-        "Balsam fir",
-        "White pine",
-        "Blue spruce",
-        "Norway spruce"
+        "$450,000",
+        "$1.2 million",
+        "$4.5 million",
+        "$22 million"
       ],
       "answer": 2
     }
